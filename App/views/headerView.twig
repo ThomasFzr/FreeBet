@@ -1,0 +1,77 @@
+<div id="container-allheader">
+    <div id="container-header">
+        <div id="container-leftheader">
+            <a href="/" id="link-logo-tmt">
+                <img src="/Public/assets/images/logoFreebet.png" id="logo-freebet">
+            </a>
+        </div>
+        <div id="container-rightheader">
+            {% if isConnected %}
+            <div id="container-rightheader-top">
+                <div id="container-rightheader-topleft">
+
+                    {% if isAdmin %}
+                    Compte admin 🔧
+                    {% elseif surname is defined %}
+                    Bonjour, {{surname}}!
+                    {% else %}
+                    Bonjour!
+                    {% endif %}
+
+                </div>
+                <div id="container-rightheader-topright">
+                    <a href="javascript:void(0)" id="btn-profile">
+                        <img src="Public/assets/images/iconeCompte.png" alt="img icone compte" id="imgIconAccount">
+                    </a>
+                </div>
+            </div>
+            {% else %}
+            <div id="container-rightheader-top">
+                <div id="container-rightheader-topleft">
+                    <a href="/connection">
+                        Me connecter
+                    </a>
+                </div>
+                {# <div id="container-rightheader-topright">
+                    <a href="/connection">
+                        <img src="Public/assets/images/iconeCompte.png" alt="img icone compte" id="imgIconAccount">
+                    </a>
+                </div> #}
+            </div>
+            {% endif %}
+
+            <div id="container-rightheader-bottom">
+                <div id="btn-profile-deroulant" class="profile-card" style="display: none;">
+                    <div class="profile-card">
+                        {% if isAdmin %}
+                        <a href="/allUsers" id="link-profile-card">UTILISATEURS</a><br>
+                        <a href="/allReviews" id="link-profile-card">AVIS</a><br>
+                        <a href="/allFavoritesReservations" id="link-profile-card">FAVORIS/RESERVATIONS</a><br>
+                        <a href="/allEquipmentServiceAccommodationType" id="link-profile-card">TYPE/SERVICE/EQUIPEMENT</a><br>
+                        {%else%}
+                        <a href="/myAccount" id="link-profile-card">MON COMPTE</a><br>
+                        <a href="/myReservations" id="link-profile-card">MES RESERVATIONS</a><br>
+                        <a href="/myReviews" id="link-profile-card">MES AVIS</a><br>
+                        <a href="/myFavorites" id="link-profile-card">MES FAVORIS</a><br>
+                        {%endif%}
+                        <a href="/deconnection" id="link-profile-card">DECONNEXION</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var btnprofile = document.getElementById('btn-profile');
+        var btnprofileDeroulant = document.getElementById('btn-profile-deroulant');
+
+        btnprofile.addEventListener('click', function() {
+            if (btnprofileDeroulant.style.display === 'none' || btnprofileDeroulant.style.display === '') {
+                btnprofileDeroulant.style.display = 'block';
+            } else {
+                btnprofileDeroulant.style.display = 'none';
+            }
+        });
+    });
+</script>

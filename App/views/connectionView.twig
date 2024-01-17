@@ -1,0 +1,29 @@
+{% extends "templates/template.twig" %}
+
+
+{% block head %}
+<link rel="stylesheet" href="Public/assets/styles/connectionRegisterStyle.css">
+{% endblock %}
+
+{% block content %}
+</br></br>
+<div id="login-form-wrap">
+    <h2>Connexion</h2>
+    <form id="login-form" action="/processLogin" method="post">
+        <p>
+            <input type="email" id="email" name="email" placeholder="Adresse mail" required autofocus><i class="validation"><span></span><span></span></i>
+        </p>
+        <p>
+            <input type="password" id="password" name="password" placeholder="Mot de passe" required><i class="validation"><span></span><span></span></i>
+        </p>
+        <p>
+            <input type="submit" id="login" value="SE CONNECTER">
+        </p>
+    </form>
+    <div id="create-account-wrap">
+        <p>Pas encore inscris? <a href="/inscription">M'inscrire</a>
+        <p>
+    </div>
+</div>
+
+{% endblock %}
