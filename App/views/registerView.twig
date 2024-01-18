@@ -7,23 +7,21 @@
 
 {% block content %}
 </br></br>
-<div id="register-form-wrap">
-    <h2>Inscription</h2>
-    <form id="register-form" action="/processRegister" method="post">
-        <p>
-            <input type="email" id="email" name="email" placeholder="Adresse mail" required autofocus><i class="validation"><span></span><span></span></i>
-        </p>
-        <p>
-            <input type="password" id="password" name="password" placeholder="Mot de passe" required><i class="validation"><span></span><span></span></i>
-        </p>
-        <p>
-            <input type="submit" id="register" value="S'INSCRIRE">
-        </p>
-    </form>
-    <div id="create-account-wrap">
-        <p>Déjà inscris? <a href="/connection">Me connecter</a>
-        <p>
+
+<div class="login-box">
+  <p>INSCRIPTION</p>
+  <form action="/processRegister" method="post">
+    <div class="user-box">
+      <input type="email" id="email" name="email" required autofocus><i class="validation"><span></span><span></span></i>
+      <label>Adresse mail</label>
     </div>
+    <div class="user-box">
+      <input type="password" id="password" name="password" required><i class="validation"><span></span><span></span></i>
+      <label>Mot de passe</label>
+    </div>
+     <input type="submit" id="register" value="S'INSCRIRE">
+  </form>
+  <p>Déjà inscris? <a href="/connection" class="a2">Me connecter</a></p>
 </div>
 
 {% endblock %}
