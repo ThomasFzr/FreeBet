@@ -12,8 +12,14 @@ git clone https://github.com/ThomasFzr/FreeBet.git
 ```
 
   
-- Launch the Apache server: ```docker-compose up -d``` 
-- Provide necessary permissions to the src folder : ```sudo chmod 777 -R src```  
+- Launch the Apache server:
+  ```bash
+  docker-compose up -d
+  ``` 
+- Provide necessary permissions to the src folder :
+   ```bash
+  sudo chmod 777 -R src
+   ```  
 
 Move every file and folder into the src folder.
   
@@ -37,7 +43,13 @@ Fill in the connection information with the details provided in the docker-compo
 Now, you have access to the database.
 
 
-- Navigate to the src folder: ```cd src```
-- Install dependencies : ```composer install```
+- Navigate to the src folder:
+  ```bash
+  cd src
+  ```
+- Install dependencies :
+  ```bash
+  composer install
+  ```
 
 - Go to the internet and enter the URL: `http://localhost:8080/`
