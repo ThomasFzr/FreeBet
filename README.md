@@ -7,10 +7,10 @@
 
 # Project Setup
 
+- Clone the project:
 ```bash
 git clone https://github.com/ThomasFzr/FreeBet.git
 ```
-
   
 - Launch the Apache server:
   ```bash
