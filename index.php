@@ -80,6 +80,11 @@ switch ($route) {
         $controller->processRegister();
         break;
 
+    case '/fillFootData':
+        $controller = new FootballController();
+        $controller->getFootballMatches();
+        break;
+
     case '/deconnection':
         $controller = new DeconnectionController();
         $controller->processDeconnection();
