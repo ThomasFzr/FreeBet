@@ -14,9 +14,9 @@ class User
     //Récupération données user
     public function getUserInfo($email)
     {
-        $rqt = "SELECT * FROM User WHERE mail = :email";
+        $rqt = "SELECT * FROM User WHERE mail = :mail";
         $stmt = $this->conn->prepare($rqt);
-        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->bindParam(':mail', $email, PDO::PARAM_STR);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }

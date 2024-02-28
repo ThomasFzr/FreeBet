@@ -65,6 +65,9 @@ switch ($urlPath) {
     case '/connection':
         echo $twig->render('connectionView.twig');
         break;
+    case '/profile':
+        $userProfile = new UserProfileController(); // Passez l'instance de Twig si nécessaire
+        break;
 
     case '/inscription':
         echo $twig->render('registerView.twig');
