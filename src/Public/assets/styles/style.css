@@ -273,3 +273,8 @@ button:hover:after {
     width: 85%;
     text-align: center;
   }
+
+  #icon-red-bin {
+    width: 25px;
+    text-align: center;
+}

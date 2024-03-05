@@ -1,0 +1,33 @@
+{% extends "templates/template.twig" %}
+
+{% block content %}
+<h3>Mon profil: </h3>
+<div id="profile-user">
+    <form action="/editInfoUser" method="post">
+        Adresse mail :
+        <input type="email" value="{{infoUser.mail}}" name="mail" required>
+        <input type="image" src="Public/assets/images/iconeStyloBleu.png" alt="iconeStyloBleu" id="icon-red-bin">
+    </form><br>
+    <form action="/editInfoUser" method="post">
+        Mdp :
+        <input type="text" value="{{infoUser.pwd}}" name="pwd" required>
+        <input type="image" src="Public/assets/images/iconeStyloBleu.png" alt="iconeStyloBleu" id="icon-red-bin">
+    </form><br>
+    <form action="/editInfoUser" method="post">
+        Nom :
+        <input type="text" value="{% if infoUser.name %}{{infoUser.name}}{% else %}Pas encore définis{% endif %}" name="name" required>
+        <input type="image" src="Public/assets/images/iconeStyloBleu.png" alt="iconeStyloBleu" id="icon-red-bin">
+    </form><br>
+    <form action="/editInfoUser" method="post">
+        Prénom :
+        <input type="text" value="{% if infoUser.surname %}{{infoUser.surname}}{% else %}Pas encore définis{% endif %}" name="surname" required>
+        <input type="image" src="Public/assets/images/iconeStyloBleu.png" alt="iconeStyloBleu" id="icon-red-bin">
+    </form><br>
+    <form action="/editInfoUser" method="post">
+        Numéro de tél :
+        <input type="text" pattern="^0\d{9}$" value="{% if infoUser.phoneNbr != null %} {{infoUser.phoneNbr}} {%else%} Pas défini {%endif%}" name="phoneNbr" required>
+        <input type="image" src="Public/assets/images/iconeStyloBleu.png" alt="iconeStyloBleu" id="icon-red-bin">
+    </form><br>
+</div>
+
+{% endblock %}

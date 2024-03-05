@@ -22,7 +22,7 @@ class Connection
             if (password_verify($password, $row['pwd'])) {
                 $_SESSION['isConnected'] = true;
                 $_SESSION['mail'] = $mail;
-                $_SESSION['userID'] = $row['userID'];
+                $_SESSION['userID'] = $row['user_id'];
                 $_SESSION['surname'] = $row['surname'];
                 $_SESSION['isAdmin'] = $row['isAdmin'];
                 return true;

@@ -80,6 +80,16 @@ switch ($route) {
         $controller->processRegister();
         break;
 
+    case '/myAccount':
+        $controller = new GetInfoUserController($twig);
+        $controller->getInfoUser();
+        break;
+
+    case '/editInfoUser':
+        $controller = new EditInfoUserController();
+        $controller->processEditInfoUser();
+        break;
+
     case '/fillFootData':
         $controller = new FootballController();
         $controller->getFootballMatches();
