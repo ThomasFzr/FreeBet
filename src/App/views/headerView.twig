@@ -1,0 +1,29 @@
+<div id="container-allheader">
+    <div id="container-header">
+        <div id="container-leftheader">
+            <a href="/" id="link-logo-tmt">
+                <img src="/Public/assets/images/logoFreebet.png" id="logo-freebet">
+            </a>
+        </div>
+        <div id="container-rightheader">
+            {% if isConnected %}
+             <div class="wrapper">
+                    <form action="/myAccount">
+                        <button> MON COMPTE </button>
+                    </form>
+                </div>
+            <div class="wrapper">
+                    <form action="/deconnection">
+                        <button> DECONNEXION </button>
+                    </form>
+                </div>
+            {% else %}
+                <div class="wrapper">
+                    <form action="/connection">
+                        <button> CONNEXION </button>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
