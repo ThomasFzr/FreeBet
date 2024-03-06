@@ -85,6 +85,15 @@ switch ($route) {
         $controller->getInfoUser();
         break;
 
+    case '/addMatch':
+        echo $twig->render('addMatchView.twig');
+        break;
+
+    case '/processAddMatch':
+        $controller = new AddMatchController();
+        $controller->AddMatch();
+        break;
+
     case '/editInfoUser':
         $controller = new EditInfoUserController();
         $controller->processEditInfoUser();
