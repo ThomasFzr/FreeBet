@@ -7,7 +7,6 @@ class FootballData
     private $conn;
     function __construct()
     {
-        echo "FootballData __construct method is called.\n";
         require_once __DIR__ . '/../models/Database.php';
         require_once __DIR__ . '/../models/FootballDataService.php';
         $db = new Database();
@@ -28,57 +27,55 @@ class FootballData
         // Insert data into the database
         // $this->insertData('areas', $areasData);
         // $this->insertData('competitions', $competitionsData);
-        $this->insertData('football_matches', $teamsData);
+        $this->insertData('football_match', $teamsData);
         // $this->insertData('persons', $personsData);
         // $this->insertData('matches', $matchesData);
     }
 
 
 
-    private function insertData($tableName, $matchesInfo)
+    public function insertData($tableName, $matchesInfo)
     {
         foreach ($matchesInfo['matches'] as $matchInfo) {
             // Extracting relevant information for each match
-            $matchId = $matchInfo['id'];
             $utcDate = new DateTime($matchInfo['utcDate']);
-            $utcDateFormatted = $utcDate->format('Y-m-d H:i:s');
+            $utcDateFormatted = $utcDate->format('d/m/Y');
             $status = $matchInfo['status'];
-            $matchday = $matchInfo['matchday'];
-            $stage = $matchInfo['stage'];
             $homeTeamId = $matchInfo['homeTeam']['id'];
             $awayTeamId = $matchInfo['awayTeam']['id'];
-            $homeTeamScore = $matchInfo['score']['fullTime']['home'];
-            $awayTeamScore = $matchInfo['score']['fullTime']['away'];
-            $refereeId = isset($matchInfo['referees'][0]['id']) ? $matchInfo['referees'][0]['id'] : null;
-    
-            try {
-                // Using PDO to prepare and execute the query
-                $query = "INSERT INTO $tableName 
-                          (`match_id`, `utc_date`, `status`, `matchday`, `stage`, `home_team_id`, `away_team_id`, `home_team_score`, `away_team_score`, `referee_id`)
-                          VALUES
-                          (:matchId, :utcDate, :status, :matchday, :stage, :homeTeamId, :awayTeamId, :homeTeamScore, :awayTeamScore, :refereeId)";
-    
-                $stmt = $this->conn->prepare($query);
-    
-                // Bind parameters
-                $stmt->bindParam(':matchId', $matchId);
-                $stmt->bindParam(':utcDate', $utcDateFormatted); // Use the formatted datetime string
-                $stmt->bindParam(':status', $status);
-                $stmt->bindParam(':matchday', $matchday);
-                $stmt->bindParam(':stage', $stage);
-                $stmt->bindParam(':homeTeamId', $homeTeamId);
-                $stmt->bindParam(':awayTeamId', $awayTeamId);
-                $stmt->bindParam(':homeTeamScore', $homeTeamScore);
-                $stmt->bindParam(':awayTeamScore', $awayTeamScore);
-                $stmt->bindParam(':refereeId', $refereeId);
-    
-                $stmt->execute();
-    
-                echo "Match info for match ID $matchId inserted successfully!<br>";
-            } catch (PDOException $e) {
-                echo "Error: " . $e->getMessage();
+            if (isset($matchInfo['score']['fullTime']['home']) && isset($matchInfo['score']['fullTime']['away'])) {
+                $homeTeamScore = $matchInfo['score']['fullTime']['home'];
+                $awayTeamScore = $matchInfo['score']['fullTime']['away'];
+            } else {
+                $homeTeamScore = null;
+                $awayTeamScore = null;
             }
+            if ($homeTeamId == 523) {
+                $opponent_team_id = $awayTeamId;
+                $OL_score = $homeTeamScore;
+                $opponent_score = $awayTeamScore;
+            } else {
+                $opponent_team_id = $homeTeamId;
+                $OL_score = $awayTeamScore;
+                $opponent_score = $homeTeamScore;
+            }
+
+            // Using PDO to prepare and execute the query
+            $query = "INSERT INTO $tableName 
+                          (`date`, `status`, `opponent_team_id`, `OL_score`, `opponent_score`)
+                          VALUES
+                          (:utcDate, :status, :opponent_team_id, :OL_score, :opponent_score)";
+
+            $stmt = $this->conn->prepare($query);
+
+            // Bind parameters
+            $stmt->bindParam(':utcDate', $utcDateFormatted); // Use the formatted datetime string
+            $stmt->bindParam(':status', $status);
+            $stmt->bindParam(':opponent_team_id', $opponent_team_id);
+            $stmt->bindParam(':OL_score', $OL_score);
+            $stmt->bindParam(':opponent_score', $opponent_score);
+
+            $stmt->execute();
         }
     }
-    
 }

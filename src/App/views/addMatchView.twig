@@ -1,0 +1,27 @@
+{% extends "templates/template.twig" %}
+
+
+{% block content %}
+	Ajouter un match
+
+
+	<div id="add-match-holder">
+		<form action="/processAddMatch" method="post">
+			Date:
+			<input type="date" name="date"required>
+			<br><br>
+
+			Etat:
+			<select name="status" required>
+				<option value="SCHEDULED">SCHEDULED</option>
+				<option value="TIMED">TIMED</option>
+				<option value="FINISHED">FINISHED</option>
+			</select><br><br>
+			Equipe adversaire:
+			<input type="number" name="opponent-id" placeholder="Id">
+			<br><br>
+            <input type="submit" value="AJOUTER LE MATCH">
+		</form>
+	</div>
+
+{% endblock %}
