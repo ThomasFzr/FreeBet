@@ -38,10 +38,10 @@ class FootballData
     public function fillDatabaseFromApi()
     {
         $teamsData = $this->getTeams(523);
-        $this->insertData('football_match', $teamsData);
+        $this->insertOrUpdateData('Football_match', $teamsData);
     }
 
-    public function insertData($tableName, $matchesInfo)
+    public function insertOrUpdateData($tableName, $matchesInfo)
     {
         foreach ($matchesInfo['matches'] as $matchInfo) {
             // Extracting relevant information for each match
@@ -67,28 +67,48 @@ class FootballData
                 $opponent_score = $homeTeamScore;
             }
 
-            // Using PDO to prepare and execute the query
-            $query = "INSERT INTO $tableName 
-                          (`date`, `status`, `opponent_team_id`, `OL_score`, `opponent_score`)
-                          VALUES
-                          (:utcDate, :status, :opponent_team_id, :OL_score, :opponent_score)";
+            // Check if the record already exists based on the date
+            $existingRecordQuery = "SELECT * FROM $tableName WHERE `date` = :utcDate";
+            $existingRecordStmt = $this->conn->prepare($existingRecordQuery);
+            $existingRecordStmt->bindParam(':utcDate', $utcDateFormatted);
+            $existingRecordStmt->execute();
 
-            $stmt = $this->conn->prepare($query);
+            if ($existingRecordStmt->rowCount() > 0) {
+                // If record exists, update the values
+                $updateQuery = "UPDATE $tableName SET 
+                                `status` = :status,
+                                `opponent_team_id` = :opponent_team_id,
+                                `OL_score` = :OL_score,
+                                `opponent_score` = :opponent_score
+                                WHERE `date` = :utcDate";
 
-            // Bind parameters
-            $stmt->bindParam(':utcDate', $utcDateFormatted); // Use the formatted datetime string
-            $stmt->bindParam(':status', $status);
-            $stmt->bindParam(':opponent_team_id', $opponent_team_id);
-            $stmt->bindParam(':OL_score', $OL_score);
-            $stmt->bindParam(':opponent_score', $opponent_score);
+                $updateStmt = $this->conn->prepare($updateQuery);
+                $updateStmt->bindParam(':utcDate', $utcDateFormatted);  // Add this line
+            } else {
+                // If record does not exist, insert a new record
+                $updateQuery = "INSERT INTO $tableName 
+                                (`date`, `status`, `opponent_team_id`, `OL_score`, `opponent_score`)
+                                VALUES
+                                (:utcDate, :status, :opponent_team_id, :OL_score, :opponent_score)";
 
-            $stmt->execute();
+                $updateStmt = $this->conn->prepare($updateQuery);
+            }
+
+            // Bind parameters for update/insert
+            $updateStmt->bindParam(':utcDate', $utcDateFormatted);  // Add this line
+            $updateStmt->bindParam(':status', $status);
+            $updateStmt->bindParam(':opponent_team_id', $opponent_team_id);
+            $updateStmt->bindParam(':OL_score', $OL_score);
+            $updateStmt->bindParam(':opponent_score', $opponent_score);
+
+            // Execute the update/insert query
+            $updateStmt->execute();
         }
     }
 
     public function GetAllFootballMatches()
     {
-        $rqt = "SELECT * FROM football_match";
+        $rqt = "SELECT * FROM Football_match";
         $stmt = $this->conn->prepare($rqt);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

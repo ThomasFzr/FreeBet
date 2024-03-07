@@ -31,7 +31,7 @@ class Database
         $result = $this->conn->query($sql);
         if ($result->rowCount() == 0) {
                 $sql = "CREATE TABLE User (user_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255), surname VARCHAR(255), mail VARCHAR(255) NOT NULL, pwd VARCHAR(255) NOT NULL, phoneNbr VARCHAR(255), isAdmin BOOL NOT NULL DEFAULT false, UNIQUE(mail));
-                        CREATE TABLE IF NOT EXISTS football_match (match_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, date VARCHAR(255) NOT NULL, status VARCHAR(50) NOT NULL, opponent_team_id INT NOT NULL, OL_score INT, opponent_score INT);
+                        CREATE TABLE IF NOT EXISTS Football_match (match_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, date VARCHAR(255) NOT NULL, status VARCHAR(50) NOT NULL, opponent_team_id INT NOT NULL, OL_score INT, opponent_score INT);
                         CREATE TABLE IF NOT EXISTS Bet (match_id INT NOT NULL, user_id INT NOT NULL, victorious_team_id INT NOT NULL, PRIMARY KEY (match_id, user_id), FOREIGN KEY (match_id) REFERENCES football_match(match_id), FOREIGN KEY (user_id) REFERENCES User(user_id));
                         ";
             $this->conn->exec($sql);
