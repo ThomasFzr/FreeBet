@@ -274,6 +274,11 @@ button:hover:after {
     text-align: center;
   }
 
+  #zone-cards a{
+    text-decoration: none;
+    color: black;
+  }
+
   #icon-red-bin {
     width: 25px;
     text-align: center;
@@ -284,4 +289,32 @@ button:hover:after {
 #add-match-holder{
     padding-top: 4vh;
     padding-left: 15vw;
+}
+
+/* Football matches */
+
+#football-matches-holder{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+#football-matches{
+    width: 80%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
 }
