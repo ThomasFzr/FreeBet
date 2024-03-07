@@ -89,6 +89,11 @@ switch ($route) {
         echo $twig->render('addMatchView.twig');
         break;
 
+    case '/football':
+        $controller = new GetFootballMatchController($twig);
+        $controller->GetFootballMatch();
+        break;
+
     case '/processAddMatch':
         $controller = new AddMatchController();
         $controller->AddMatch();

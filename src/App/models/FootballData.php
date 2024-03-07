@@ -5,34 +5,41 @@ ini_set('display_errors', 1);
 class FootballData
 {
     private $conn;
+    private $apiUrl;
+    private $apiKey;
     function __construct()
     {
         require_once __DIR__ . '/../models/Database.php';
-        require_once __DIR__ . '/../models/FootballDataService.php';
         $db = new Database();
         $this->conn = $db->conn;
+
+        $apiUrl = 'http://api.football-data.org/v4/';
+        $apiKey = '4ad5e5bf946f40b688c9aaea3402e519';
+        $this->apiUrl = $apiUrl;
+        $this->apiKey = $apiKey;
     }
 
-    public function fillDatabaseFromApi($apiUrl, $apiKey)
+    private function makeRequest($url)
     {
-        $footballDataService = new FootballDataService($apiUrl, $apiKey);
-
-        // Fetch data from the API
-        // $areasData = $footballDataService->getAreas();
-        // $competitionsData = $footballDataService->getCompetitions();
-        $teamsData = $footballDataService->getTeams(523);
-        // $personsData = $footballDataService->getPersons(12);
-        // $matchesData = $footballDataService->getMatches();
-
-        // Insert data into the database
-        // $this->insertData('areas', $areasData);
-        // $this->insertData('competitions', $competitionsData);
-        $this->insertData('football_match', $teamsData);
-        // $this->insertData('persons', $personsData);
-        // $this->insertData('matches', $matchesData);
+        $reqPrefs['http']['method'] = 'GET';
+        $reqPrefs['http']['header'] = 'X-Auth-Token: ' . $this->apiKey;
+        $streamContext = stream_context_create($reqPrefs);
+        sleep(1);
+        return file_get_contents($url, false, $streamContext);
     }
 
+    public function getTeams($teamNbr)
+    {
+        $url = $this->apiUrl . "teams/$teamNbr/matches";
+        $response = $this->makeRequest($url);
+        return json_decode($response, true);
+    }
 
+    public function fillDatabaseFromApi()
+    {
+        $teamsData = $this->getTeams(523);
+        $this->insertData('football_match', $teamsData);
+    }
 
     public function insertData($tableName, $matchesInfo)
     {
@@ -77,5 +84,13 @@ class FootballData
 
             $stmt->execute();
         }
+    }
+
+    public function GetAllFootballMatches()
+    {
+        $rqt = "SELECT * FROM football_match";
+        $stmt = $this->conn->prepare($rqt);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

@@ -1,11 +1,36 @@
 {% extends "templates/template.twig" %}
 {% block footer %}
-{% include "footerView.twig" %}
+	{% include "footerView.twig" %}
 {% endblock %}
 
- {% block content %}
+{% block content %}
+	<br>
+	<div id="football-matches-holder">
+		<div id="football-matches">
+			<h1>FOOTBALL</h1><br>
 
-
-FOOTBALL
-
- {% endblock %}
+			<table>
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Status</th>
+						<th>Opponent Team ID</th>
+						<th>OL Score</th>
+						<th>Opponent Score</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for footballMatch in footballMatches %}
+						<tr>
+							<td>{{footballMatch.date}}</td>
+							<td>{{footballMatch.status}}</td>
+							<td>{{footballMatch.opponent_team_id}}</td>
+							<td>{{footballMatch.OL_score}}</td>
+							<td>{{footballMatch.opponent_score}}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</tbody>
+		</table>
+	</div>
+</div>{% endblock %}
