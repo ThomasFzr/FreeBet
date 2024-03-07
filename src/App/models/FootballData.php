@@ -38,7 +38,7 @@ class FootballData
     public function fillDatabaseFromApi()
     {
         $teamsData = $this->getTeams(523);
-        $this->insertOrUpdateData('football_match', $teamsData);
+        $this->insertOrUpdateData('Football_match', $teamsData);
     }
 
     public function insertOrUpdateData($tableName, $matchesInfo)
@@ -108,7 +108,7 @@ class FootballData
 
     public function GetAllFootballMatches()
     {
-        $rqt = "SELECT * FROM football_match";
+        $rqt = "SELECT * FROM Football_match";
         $stmt = $this->conn->prepare($rqt);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
