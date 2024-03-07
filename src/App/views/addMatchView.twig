@@ -2,13 +2,13 @@
 
 
 {% block content %}
-	Ajouter un match
 
 
 	<div id="add-match-holder">
+		<h1>Ajouter un match</h1><br>
 		<form action="/processAddMatch" method="post">
 			Date:
-			<input type="date" name="date"required>
+			<input type="date" name="date" required>
 			<br><br>
 
 			Etat:
@@ -20,7 +20,7 @@
 			Equipe adversaire:
 			<input type="number" name="opponent-id" placeholder="Id">
 			<br><br>
-            <input type="submit" value="AJOUTER LE MATCH">
+			<input type="submit" value="AJOUTER LE MATCH">
 		</form>
 	</div>
 

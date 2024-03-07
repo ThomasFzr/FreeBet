@@ -278,3 +278,10 @@ button:hover:after {
     width: 25px;
     text-align: center;
 }
+
+/* Add match */
+
+#add-match-holder{
+    padding-top: 4vh;
+    padding-left: 15vw;
+}
