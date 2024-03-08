@@ -10,7 +10,7 @@
 				{% if isAdmin %}
 					<div class="wrapper">
 						<form action="/addMatch">
-							<button>
+							<button class="btn-header">
 								Compte admin 🔧
 							</button>
 						</form>
@@ -18,7 +18,7 @@
 				{% else %}
 					<div class="wrapper">
 						<form action="/myAccount">
-							<button>
+							<button class="btn-header">
 								MON COMPTE
 							</button>
 						</form>
@@ -26,7 +26,7 @@
 				{% endif %}
 				<div class="wrapper">
 					<form action="/deconnection">
-						<button>
+						<button class="btn-header">
 							DECONNEXION
 						</button>
 					</form>
@@ -34,7 +34,7 @@
 			{% else %}
 				<div class="wrapper">
 					<form action="/connection">
-						<button>
+						<button class="btn-header">
 							CONNEXION
 						</button>
 					</form>
