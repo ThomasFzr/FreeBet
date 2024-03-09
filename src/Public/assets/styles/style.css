@@ -286,11 +286,20 @@ footer {
     text-align: center;
 }
 
-/* Add match */
+/* Admin */
 
-#add-match-holder {
+.add-all-match-container{
+    display: flex;
+}
+
+.add-match-holder {
     padding-top: 4vh;
     padding-left: 15vw;
+    /* background-color: #a6ff00; */
+}
+
+.all-matches{
+    /* background-color: red; */
 }
 
 /* Football matches */

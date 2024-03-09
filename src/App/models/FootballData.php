@@ -38,6 +38,7 @@ class FootballData
     public function fillDatabaseFromApi()
     {
         $teamsData = $this->getTeams(523);
+        // var_dump($teamsData);
         $this->insertOrUpdateData('Football_match', $teamsData);
     }
 

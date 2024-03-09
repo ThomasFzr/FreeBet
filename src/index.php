@@ -55,8 +55,8 @@ $urlPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $parts = explode('/', trim($urlPath, '/'));
 $route = "/" . $parts[0];
 $id = $parts[1] ?? null;
-
-switch ($route) {
+// echo $urlPath;
+switch ($urlPath) {
     case '':
     case '/':
         echo $twig->render('homeView.twig');
@@ -85,8 +85,14 @@ switch ($route) {
         $controller->getInfoUser();
         break;
 
-    case '/addMatch':
-        echo $twig->render('addMatchView.twig');
+    case '/admin':
+        $controller = new AdminController($twig);
+        $controller->AdminController();
+        break;
+
+    case '/admin/football':
+        $controller = new AdminFootballController($twig);
+        $controller->AdminFootball();
         break;
 
     case '/processAddBet':
