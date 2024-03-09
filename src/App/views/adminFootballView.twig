@@ -1,0 +1,84 @@
+{% extends "templates/template.twig" %}
+
+
+{% block content %}
+
+	<div class="add-all-match-container">
+		<div class="add-match-holder">
+			<h1>Ajouter un match</h1><br>
+			<form action="/processAddMatch" method="post">
+				Date:
+				<input type="date" name="date" required>
+				<br><br>
+
+				Etat:
+				<select name="status" required>
+					<option value="SCHEDULED">SCHEDULED</option>
+					<option value="TIMED">TIMED</option>
+				</select><br><br>
+				Equipe adversaire:
+				<input type="number" name="opponent-id" placeholder="Id">
+				<br><br>
+				<input type="submit" class="button" value="AJOUTER LE MATCH">
+
+			</form>
+		</div>
+
+		<div class="all-matches">
+			<div id="football-matches-holder"><br>
+				<div class="football-matches-first-holder">
+					<div id="football-matches">
+						<table>
+							<thead>
+								<tr>
+									<th>Date</th>
+									<th>Status</th>
+									<th>Opponent Team ID</th>
+									<th>OL Score</th>
+									<th>Opponent Score</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for footballMatch in notFinishedfootballMatches %}
+									<tr>
+										<td>{{footballMatch.date}}</td>
+										<td>{{footballMatch.status}}</td>
+										<td>{{footballMatch.opponent_team_id}}</td>
+										<td>{{footballMatch.OL_score}}</td>
+										<td>{{footballMatch.opponent_score}}</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+
+				</div><br><div class="finished-matches">
+					<h2>Finished matches</h2><br>
+					<table>
+						<thead>
+							<tr>
+								<th>Date</th>
+								<th>Status</th>
+								<th>Opponent Team ID</th>
+								<th>OL Score</th>
+								<th>Opponent Score</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for footballMatch in finishedFootballMatches %}
+								<tr>
+									<td>{{footballMatch.date}}</td>
+									<td>{{footballMatch.status}}</td>
+									<td>{{footballMatch.opponent_team_id}}</td>
+									<td>{{footballMatch.OL_score}}</td>
+									<td>{{footballMatch.opponent_score}}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
