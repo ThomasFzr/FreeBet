@@ -19,55 +19,60 @@
 							<tr>
 								<td>{{footballMatch.date}}</td>
 								<td>{{footballMatch.status}}</td>
-							 <td>
-            <button class="button" data-match="{{footballMatch.match_id}}" onclick="addBet(this, '{{footballMatch.match_id}}', '{{footballMatch.opponent_team_id}}')">{{footballMatch.opponent_team_id}}</button>
-        </td>
-        <td>
-            <button class="button" data-match="{{footballMatch.match_id}}" onclick="addBet(this, '{{footballMatch.match_id}}', 'Draw')">Draw</button>
-        </td>
-        <td>
-            <button class="button" data-match="{{footballMatch.match_id}}" onclick="addBet(this, '{{footballMatch.match_id}}', 'OL')">OL</button>
-        </td>
+								<td>
+									<button class="button" data-match="{{footballMatch.match_id}}" onclick="addBet(this, '{{footballMatch.match_id}}', '{{footballMatch.opponent_team_id}}', '{{footballMatch.opponent_team_id}}')">{{footballMatch.opponent_team_id}}</button>
+								</td>
+								<td>
+									<button class="button" data-match="{{footballMatch.match_id}}" onclick="addBet(this, '{{footballMatch.match_id}}', '{{footballMatch.opponent_team_id}}', 'Draw')">Draw</button>
+								</td>
+								<td>
+									<button class="button" data-match="{{footballMatch.match_id}}" onclick="addBet(this, '{{footballMatch.match_id}}', '{{footballMatch.opponent_team_id}}', '523')">OL</button>
+								</td>
 							</tr>
 						{% endfor %}
 					</tbody>
 				</table>
 			</div>
 			<div class="bets-container">
-				<table>
-					<thead>
+				<div class="bet-title">
+					<h2>Sélections</h2>
+				</div>
+				<div class="bet-line-container">
+					<form>
+						<div id="bets-tbody"></div>
+
+
+						<button class="button" onclick="submitBets()">Parier</button>
+					</form>
+				</div>
+			</div>
+		</div><br><div class="finished-matches">
+			<h2>Finished matches</h2><br>
+			<table>
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Status</th>
+						<th>Opponent Team ID</th>
+						<th>OL Score</th>
+						<th>Opponent Score</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for footballMatch in finishedFootballMatches %}
 						<tr>
-							<th>Sélection</th>
+							<td>{{footballMatch.date}}</td>
+							<td>{{footballMatch.status}}</td>
+							<td>{{footballMatch.opponent_team_id}}</td>
+							<td>{{footballMatch.OL_score}}</td>
+							<td>{{footballMatch.opponent_score}}</td>
 						</tr>
-					</thead>
-					<tbody
-						id="bets-tbody"><!-- Bets will be dynamically added here -->
-					</tbody>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-</div></div><br><div class="finished-matches">
-<h2>Finished matches</h2><br>
-<table>
-	<thead>
-		<tr>
-			<th>Date</th>
-			<th>Status</th>
-			<th>Opponent Team ID</th>
-			<th>OL Score</th>
-			<th>Opponent Score</th>
-		</tr>
-	</thead>
-	<tbody>
-		{% for footballMatch in finishedFootballMatches %}
-			<tr>
-				<td>{{footballMatch.date}}</td>
-				<td>{{footballMatch.status}}</td>
-				<td>{{footballMatch.opponent_team_id}}</td>
-				<td>{{footballMatch.OL_score}}</td>
-				<td>{{footballMatch.opponent_score}}</td>
-			</tr>
-		{% endfor %}
-	</tbody>
-</table></div></div>{% endblock %}{# Footer #}{% block footer%}<script src="buttonBet.js"></script>{% include "footerView.twig" %}{% endblock %}
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}{# Footer #}{% block footer%}
+	<script src="buttonBet.js"></script>
+	{% include "footerView.twig" %}
+{% endblock %}

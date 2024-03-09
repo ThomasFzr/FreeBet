@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const betsData = [];
 
     // Function to add a bet
-    window.addBet = function (button, match, betType, amount) {
-        betsData.push({ match, betType, amount });
+    window.addBet = function (button, match, opponent, betType, amount) {
+        betsData.push({ match, opponent, betType, amount });
         renderBets();
 
         // Disable all buttons in the same row
@@ -38,14 +38,28 @@ document.addEventListener('DOMContentLoaded', function () {
     // Updated function to render bets
     function renderBets() {
         betsContainer.innerHTML = '';
-    
+
         betsData.forEach(bet => {
-            const betElement = document.createElement('tr');
-            betElement.innerHTML = `<td>Match ${bet.match} - Result : ${bet.betType}</td>
-                                           <td><span class="delete-icon" onclick="deleteBet('${bet.match}')">&#10006;</span></td>`;
+            const betElement = document.createElement('div');
+            betElement.innerHTML = `<div class="bet-line">
+							<div class="title-delete-container">
+								⚽<div class="title">${bet.opponent} - OL</div>
+								<span class="delete-icon" onclick="deleteBet('${bet.match}')">&#10006;</span>
+                                <input type="hidden" name="match_id[]" value="${bet.match}">
+							</div>
+							<div class="result-amount-container">
+								<div class="result">${bet.betType}</div>
+                                <input type="hidden" name="result[]" value="${bet.betType}">
+								<input placeholder="Mise" class="input-bet-amount" name="amount[]" type="number" required>
+							</div>                            
+						</div>`;
+
+
+
+
             betsContainer.appendChild(betElement);
         });
-    
+
         // Disable buttons based on betsData
         const allButtons = document.querySelectorAll('.button');
         allButtons.forEach(button => {
@@ -53,9 +67,9 @@ document.addEventListener('DOMContentLoaded', function () {
             button.disabled = betsData.some(bet => bet.match === matchId);
         });
     }
-    
-    
-    
+
+
+
 
     renderBets();
 });

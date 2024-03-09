@@ -303,7 +303,7 @@ footer {
     flex-direction: column;
 }
 
-.football-matches-first-holder{
+.football-matches-first-holder {
     width: 80%;
     display: flex;
     justify-content: space-around;
@@ -313,9 +313,80 @@ footer {
     width: 60%;
 }
 
-.bets-container{
+.bets-container {
     width: 30%;
+    /* background-color: rgb(178, 58, 58);
+     */
+     border: solid;
+    height: 630px;
+    padding: 2px;
+
+    border-radius: 1rem;
 }
+
+.bet-title {
+    background-color: #f2f2f2;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    justify-content: center;
+    display: flex;
+
+}
+
+.bets-container .button{
+    margin-top: 2vh;
+    margin-left: 1vw;
+}
+
+.bet-line-container{
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 90%;
+}
+
+.bet-line {
+    background-color: rgb(253, 253, 253);
+    height: 5%;
+    margin-top: 2vh;
+    border-radius: 1rem;
+    border: solid;
+}
+
+.title {
+    font-size: 16px;
+    margin-top: 1vh;
+}
+
+.result {
+    margin-top: 1vh;
+    font-weight: bold;
+}
+
+.input-bet-amount {
+    max-width: 400px;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: none;
+    background-color: #f2f2f2;
+    margin-bottom: 1vh;
+    width: 20%;
+}
+
+.result-amount-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.title-delete-container {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+
 
 .finished-matches {
     width: 80%;
@@ -360,12 +431,16 @@ th {
 }
 
 .button:disabled {
-    background-color: #ddd; /* Use your preferred gray color */
-    color: #888; /* Adjust text color accordingly */
+    background-color: #ddd;
+    /* Use your preferred gray color */
+    color: #888;
+    /* Adjust text color accordingly */
 }
 
 .delete-icon {
     cursor: pointer;
-    color: red; /* Use your preferred color for the delete icon */
-    margin-left: 5px; /* Adjust margin as needed */
+    color: red;
+    /* Use your preferred color for the delete icon */
+    margin-left: 5px;
+    /* Adjust margin as needed */
 }

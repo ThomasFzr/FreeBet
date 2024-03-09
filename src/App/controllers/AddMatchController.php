@@ -19,7 +19,7 @@ class AddMatchController
                     ],
                 ]
             ];
-            $footballData->insertData("football_match", $matchesInfo);
+            $footballData->insertOrUpdateData("Football_match", $matchesInfo);
             header('Location: /addMatch');
             $_SESSION['successMsg'] = "Match ajouté avec succès.";
         } else {
