@@ -113,4 +113,22 @@ class FootballData
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function GetFinishedFootballMatches()
+    {
+        $rqt = "SELECT * FROM Football_match
+                WHERE status = 'FINISHED'";
+        $stmt = $this->conn->prepare($rqt);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function GetNotFinishedFootballMatches()
+    {
+        $rqt = "SELECT * FROM Football_match
+                WHERE status != 'FINISHED'";
+        $stmt = $this->conn->prepare($rqt);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

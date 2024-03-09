@@ -12,10 +12,12 @@ class GetFootballMatchController
     {
         require_once __DIR__ . '/../models/FootballData.php';
         $football = new FootballData();
-        $footballMatches = $football->GetAllFootballMatches();
+        $finishedFootballMatches = $football->GetFinishedFootballMatches();
+        $notFinishedfootballMatches = $football->GetNotFinishedFootballMatches();
 
         echo $this->twig->render('footballView.twig', [
-            'footballMatches' => $footballMatches,
+            'finishedFootballMatches' => $finishedFootballMatches,
+            'notFinishedfootballMatches' => $notFinishedfootballMatches
         ]);
     }
 }
