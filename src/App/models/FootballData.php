@@ -50,7 +50,9 @@ class FootballData
             $utcDateFormatted = $utcDate->format('d/m/Y');
             $status = $matchInfo['status'];
             $homeTeamId = $matchInfo['homeTeam']['id'];
+            $homeTeamName = $matchInfo['homeTeam']['name'];
             $awayTeamId = $matchInfo['awayTeam']['id'];
+            $awayTeamName = $matchInfo['awayTeam']['name'];
             if (isset($matchInfo['score']['fullTime']['home']) && isset($matchInfo['score']['fullTime']['away'])) {
                 $homeTeamScore = $matchInfo['score']['fullTime']['home'];
                 $awayTeamScore = $matchInfo['score']['fullTime']['away'];
@@ -60,10 +62,12 @@ class FootballData
             }
             if ($homeTeamId == 523) {
                 $opponent_team_id = $awayTeamId;
+                $opponent_team_name = $awayTeamName;
                 $OL_score = $homeTeamScore;
                 $opponent_score = $awayTeamScore;
             } else {
                 $opponent_team_id = $homeTeamId;
+                $opponent_team_name = $homeTeamName;
                 $OL_score = $awayTeamScore;
                 $opponent_score = $homeTeamScore;
             }
@@ -79,6 +83,7 @@ class FootballData
                 $updateQuery = "UPDATE $tableName SET 
                                 `status` = :status,
                                 `opponent_team_id` = :opponent_team_id,
+                                `opponent_team_name` = :opponent_team_name,
                                 `OL_score` = :OL_score,
                                 `opponent_score` = :opponent_score
                                 WHERE `date` = :utcDate";
@@ -88,9 +93,9 @@ class FootballData
             } else {
                 // If record does not exist, insert a new record
                 $updateQuery = "INSERT INTO $tableName 
-                                (`date`, `status`, `opponent_team_id`, `OL_score`, `opponent_score`)
+                                (`date`, `status`, `opponent_team_id`, `opponent_team_name`,`OL_score`, `opponent_score`)
                                 VALUES
-                                (:utcDate, :status, :opponent_team_id, :OL_score, :opponent_score)";
+                                (:utcDate, :status, :opponent_team_id, :opponent_team_name,:OL_score, :opponent_score)";
 
                 $updateStmt = $this->conn->prepare($updateQuery);
             }
@@ -99,6 +104,7 @@ class FootballData
             $updateStmt->bindParam(':utcDate', $utcDateFormatted);  // Add this line
             $updateStmt->bindParam(':status', $status);
             $updateStmt->bindParam(':opponent_team_id', $opponent_team_id);
+            $updateStmt->bindParam(':opponent_team_name', $opponent_team_name);
             $updateStmt->bindParam(':OL_score', $OL_score);
             $updateStmt->bindParam(':opponent_score', $opponent_score);
 
@@ -118,7 +124,8 @@ class FootballData
     public function GetFinishedFootballMatches()
     {
         $rqt = "SELECT * FROM Football_match
-                WHERE status = 'FINISHED'";
+                WHERE status = 'FINISHED'
+                ORDER BY match_id desc";
         $stmt = $this->conn->prepare($rqt);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -128,6 +135,16 @@ class FootballData
     {
         $rqt = "SELECT * FROM Football_match
                 WHERE status != 'FINISHED'";
+        $stmt = $this->conn->prepare($rqt);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function GetStatus($match_id)
+    {
+        $rqt = "SELECT status
+            FROM Football_match
+            WHERE match_id = $match_id";
         $stmt = $this->conn->prepare($rqt);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

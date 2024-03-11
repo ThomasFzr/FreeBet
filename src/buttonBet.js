@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const betsData = [];
 
     // Function to add a bet
-    window.addBet = function (button, match, opponent, betType, amount) {
-        betsData.push({ match, opponent, betType, amount });
+    window.addBet = function (button, match, opponent, bet, betName, amount) {
+        betsData.push({ match, opponent, bet, betName, amount });
         renderBets();
 
         // Disable all buttons in the same row
@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <input type="hidden" name="match_id[]" value="${bet.match}">
 							</div>
 							<div class="result-amount-container">
-								<div class="result">${bet.betType}</div>
-                                <input type="hidden" name="result[]" value="${bet.betType}">
+								<div class="result">${bet.betName}</div>
+                                <input type="hidden" name="result[]" value="${bet.bet}">
 								<input placeholder="Mise" class="input-bet-amount" name="amount[]" type="number" required>
 							</div>                            
 						</div>`;
