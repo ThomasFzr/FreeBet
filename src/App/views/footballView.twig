@@ -20,13 +20,13 @@
 								<td>{{footballMatch.date}}</td>
 								<td>{{footballMatch.status}}</td>
 								<td>
-									<button class="button" data-match="{{footballMatch.match_id}}" onclick="addBet(this, '{{footballMatch.match_id}}', '{{footballMatch.opponent_team_id}}', '{{footballMatch.opponent_team_id}}')">{{footballMatch.opponent_team_id}}</button>
+									<button class="button" data-match="{{footballMatch.match_id}}" onclick="addBet(this, '{{footballMatch.match_id}}', '{{footballMatch.opponent_team_name}}', '{{footballMatch.opponent_team_id}}', '{{footballMatch.opponent_team_name}}')">{{footballMatch.opponent_team_name}}</button>
 								</td>
 								<td>
-									<button class="button" data-match="{{footballMatch.match_id}}" onclick="addBet(this, '{{footballMatch.match_id}}', '{{footballMatch.opponent_team_id}}', 'Draw')">Draw</button>
+									<button class="button" data-match="{{footballMatch.match_id}}" onclick="addBet(this, '{{footballMatch.match_id}}', '{{footballMatch.opponent_team_name}}', 'Draw', 'Draw')">Draw</button>
 								</td>
 								<td>
-									<button class="button" data-match="{{footballMatch.match_id}}" onclick="addBet(this, '{{footballMatch.match_id}}', '{{footballMatch.opponent_team_id}}', '523')">OL</button>
+									<button class="button" data-match="{{footballMatch.match_id}}" onclick="addBet(this, '{{footballMatch.match_id}}', '{{footballMatch.opponent_team_name}}', '523', 'OL')">OL</button>
 								</td>
 							</tr>
 						{% endfor %}
@@ -53,7 +53,7 @@
 					<tr>
 						<th>Date</th>
 						<th>Status</th>
-						<th>Opponent Team ID</th>
+						<th>Opponent Team</th>
 						<th>OL Score</th>
 						<th>Opponent Score</th>
 					</tr>
@@ -63,7 +63,7 @@
 						<tr>
 							<td>{{footballMatch.date}}</td>
 							<td>{{footballMatch.status}}</td>
-							<td>{{footballMatch.opponent_team_id}}</td>
+							<td>{{footballMatch.opponent_team_name}}</td>
 							<td>{{footballMatch.OL_score}}</td>
 							<td>{{footballMatch.opponent_score}}</td>
 						</tr>
