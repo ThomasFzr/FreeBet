@@ -17,7 +17,13 @@
 					<option value="TIMED">TIMED</option>
 				</select><br><br>
 				Equipe adversaire:
-				<input type="number" name="opponent-id" placeholder="Id">
+				<select name="selectedTeam" required>
+					{% for team in allTeams %}
+						<option value="{{ team.opponent_team_id }}|{{ team.opponent_team_name }}">
+							{{team.opponent_team_name}}</option>
+					{% endfor %}
+				</select>
+
 				<br><br>
 				<input type="submit" class="button" value="AJOUTER LE MATCH">
 

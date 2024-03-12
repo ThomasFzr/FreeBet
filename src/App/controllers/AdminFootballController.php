@@ -15,10 +15,12 @@ class AdminFootballController
             $football = new FootballData();
             $finishedFootballMatches = $football->GetFinishedFootballMatches();
             $notFinishedfootballMatches = $football->GetNotFinishedFootballMatches();
+            $allTeams = $football->GetAllTeams();
 
             echo $this->twig->render('adminFootballView.twig', [
                 'finishedFootballMatches' => $finishedFootballMatches,
-                'notFinishedfootballMatches' => $notFinishedfootballMatches
+                'notFinishedfootballMatches' => $notFinishedfootballMatches,
+                'allTeams' => $allTeams
             ]);
         }
     }
