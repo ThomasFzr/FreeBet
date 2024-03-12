@@ -27,7 +27,6 @@ class Bet
         }
     }
 
-<<<<<<< HEAD
     public function UpdateCoinFromBet($user_id)
     {
         $rqt = "SELECT b.*, f.*, b.victorious_team_id AS victorious_team_id_bet
@@ -64,16 +63,6 @@ class Bet
                 $stmtUpdateBet->execute();
             }
         }
-=======
-    public function GetBetOfUser($user_id)
-    {
-        $rqt = "SELECT * FROM Bet b
-                JOIN Football_match f
-                ON f.match_id = b.match_id
-                WHERE user_id =  $user_id";
-        $stmt = $this->conn->prepare($rqt);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
->>>>>>> 5c091c0 (add name of opponent team in bdd)
     }
+ 
 }
