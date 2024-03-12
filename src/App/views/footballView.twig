@@ -56,6 +56,7 @@
 						<th>Opponent Team</th>
 						<th>OL Score</th>
 						<th>Opponent Score</th>
+						<th>Victorious team</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -66,6 +67,17 @@
 							<td>{{footballMatch.opponent_team_name}}</td>
 							<td>{{footballMatch.OL_score}}</td>
 							<td>{{footballMatch.opponent_score}}</td>
+							<td>
+
+								{% if footballMatch.victorious_team_id == 523%}
+									OL
+								{% elseif footballMatch.victorious_team_id == footballMatch.opponent_team_id %}
+									{{footballMatch.opponent_team_name}}
+								{% else %}
+									Draw
+								{% endif %}
+
+							</td>
 						</tr>
 					{% endfor %}
 				</tbody>
