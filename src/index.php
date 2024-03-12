@@ -48,14 +48,6 @@ if (isset($_SESSION['errorMsg'])) {
     unset($_SESSION['errorMsg']);
 }
 
-if (isset($_GET['accommodationType'])) {
-    $accommodationType = $_GET['accommodationType'];
-    $twig->addGlobal('accommodationType', $accommodationType);
-} else {
-    $accommodationType = '';
-    $twig->addGlobal('accommodationType', $accommodationType);
-}
-
 $urlPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $parts = explode('/', trim($urlPath, '/'));
 $route = "/" . $parts[0];
@@ -81,6 +73,8 @@ switch ($urlPath) {
     case '/processLogin':
         $controller = new LoginController();
         $controller->processLogin();
+        $coin = new AddCoinController();
+        $coin->AddCoin();
         break;
 
     case '/processRegister':
@@ -131,5 +125,11 @@ switch ($urlPath) {
     case '/deconnection':
         $controller = new DeconnectionController();
         $controller->processDeconnection();
+        break;
+
+        //TODO
+    case "/test":
+        $controller = new TestController();
+        $controller->Test();
         break;
 }

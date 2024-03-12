@@ -31,7 +31,7 @@ class User
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function addUser($mail, $pwd, $isAdmin, $name, $surname, $phoneNbr,)
+    function addUser($mail, $pwd, $isAdmin, $name, $surname, $phoneNbr)
     {
         $rqt = "SELECT * from User where mail = :mail";
         $stmt = $this->conn->prepare($rqt);
@@ -42,7 +42,7 @@ class User
             return false;
         } else {
             $hash = password_hash($pwd, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO User (mail, pwd, isAdmin, name, surname, phoneNbr,coin) VALUES (:mail,:pwd,:isAdmin,:name,:surname,:phoneNbr,:coin)";
+            $sql = "INSERT INTO User (mail, pwd, isAdmin, name, surname, phoneNbr) VALUES (:mail,:pwd,:isAdmin,:name,:surname,:phoneNbr)";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':mail', $mail, PDO::PARAM_STR);
             $stmt->bindParam(':pwd', $hash, PDO::PARAM_STR);
@@ -50,9 +50,6 @@ class User
             $stmt->bindParam(':name', $name, PDO::PARAM_STR);
             $stmt->bindParam(':surname', $surname, PDO::PARAM_STR);
             $stmt->bindParam(':phoneNbr', $phoneNbr, PDO::PARAM_STR);
-            $coin = 100;
-            $stmt->bindParam(':coin', $coin, PDO::PARAM_INT);
-
             if ($stmt->execute()) {
                 $_SESSION['successMsg'] = "Utilisateur créé!";
                 return true;
