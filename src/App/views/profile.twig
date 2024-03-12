@@ -2,11 +2,8 @@
 {% block footer %}
 {% include "footerView.twig" %}
 {% endblock %}
-
- {% block content %}
-
- <h2>Profil de l'utilisateur</h2>
- <p><strong>Email :</strong> {{ user.mail }}</p>
- <p><strong>Administrateur :</strong> {{ user.isAdmin ? 'Oui' : 'Non' }}</p>
-
- {% endblock %}
+{% block content %}
+<h2>Profil de l'utilisateur</h2>
+<p><strong>Email :</strong> {{ user.mail }}</p>
+<p><strong>Administrateur :</strong> {{ user.isAdmin ? 'Oui' : 'Non' }}</p>
+{% endblock %}

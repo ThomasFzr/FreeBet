@@ -1,3 +1,4 @@
+{% block content %}
 <div id="container-allheader">
 	<div id="container-header">
 		<div id="container-leftheader">
@@ -7,39 +8,49 @@
 		</div>
 		<div id="container-rightheader">
 			{% if isConnected %}
-				{% if isAdmin %}
-					<div class="wrapper">
-						<form action="/admin">
-							<button class="btn-header">
-								Compte admin 🔧
-							</button>
-						</form>
-					</div>
-				{% else %}
-					<div class="wrapper">
-						<form action="/myAccount">
-							<button class="btn-header">
-								MON COMPTE
-							</button>
-						</form>
-					</div>
-				{% endif %}
-				<div class="wrapper">
-					<form action="/deconnection">
-						<button class="btn-header">
-							DECONNEXION
-						</button>
-					</form>
-				</div>
+			{% if isAdmin %}
+			<div class="wrapper">
+				<form action="/admin">
+					<button class="btn-header">
+						Compte admin 🔧
+					</button>
+				</form>
+			</div>
 			{% else %}
-				<div class="wrapper">
-					<form action="/connection">
-						<button class="btn-header">
-							CONNEXION
-						</button>
-					</form>
+			<div class="wrapper">
+				<form action="/myAccount">
+					<button class="btn-header">
+						MON COMPTE
+					</button>
+				</form>
+			</div>
+			{% endif %}
+			<div class="wrapper">
+				<form action="/deconnection">
+					<button class="btn-header">
+						DECONNEXION
+					</button>
+				</form>
+			</div>
+			<div class="wrapper">
+				<div class="btn-header">
+					<div id="coinDiv" data-coin="{{ coin }}" style="color:black ;">credit : {{ coin }} </div>
 				</div>
+			</div>
+			{% else %}
+			<div class="wrapper">
+				<form action="/connection">
+					<button class="btn-header">
+						CONNEXION
+					</button>
+				</form>
+			</div>
 			{% endif %}
 		</div>
 	</div>
 </div>
+{% endblock %}
+
+{% block footer%}
+<script src="test.js"></script>
+{% endblock %}

@@ -25,6 +25,8 @@ class Connection
                 $_SESSION['userID'] = $row['user_id'];
                 $_SESSION['surname'] = $row['surname'];
                 $_SESSION['isAdmin'] = $row['isAdmin'];
+                $_SESSION['coin'] = $row['coin'];
+
                 return true;
             } else {
                 return false;

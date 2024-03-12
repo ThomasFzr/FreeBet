@@ -35,41 +35,55 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Updated function to render bets
+    function updateTotalAmount() {
+        const amountInputs = document.querySelectorAll('input.input-bet-amount');
+        let totalAmount = 0;
+        amountInputs.forEach(input => {
+            const amount = Number(input.value) || 0;
+            totalAmount += amount;
+        });
+
+        const totalBetAmountMessage = document.getElementById('totalBetAmountMessage');
+        if (totalBetAmountMessage) {
+            totalBetAmountMessage.textContent = `Total des mises : ${totalAmount}`;
+        }
+    }
+
     function renderBets() {
         betsContainer.innerHTML = '';
+        console.log("Taille de betsData:", betsData.length);
 
         betsData.forEach(bet => {
             const betElement = document.createElement('div');
-            betElement.innerHTML = `<div class="bet-line">
-							<div class="title-delete-container">
-								⚽<div class="title">${bet.opponent} - OL</div>
-								<span class="delete-icon" onclick="deleteBet('${bet.match}')">&#10006;</span>
-                                <input type="hidden" name="match_id[]" value="${bet.match}">
-							</div>
-							<div class="result-amount-container">
-								<div class="result">${bet.betName}</div>
-                                <input type="hidden" name="result[]" value="${bet.bet}">
-								<input placeholder="Mise" class="input-bet-amount" name="amount[]" type="number" required>
-							</div>                            
-						</div>`;
-
-
-
-
+            betElement.classList.add('bet-line'); // Ajouté pour le style
+            betElement.innerHTML = `
+                <div class="title-delete-container">
+                    ⚽<div class="title">${bet.opponent} - OL</div>
+                    <span class="delete-icon" onclick="deleteBet('${bet.match}')">&#10006;</span>
+                    <input type="hidden" name="match_id[]" value="${bet.match}">
+                </div>
+                <div class="result-amount-container">
+                    <div class="result">${bet.betName}</div>
+                    <input type="hidden" name="result[]" value="${bet.bet}">
+                    <input min="0" placeholder="Mise" class="input-bet-amount" name="amount[]" type="number" required>
+                </div>
+            `;
             betsContainer.appendChild(betElement);
+
+            // Attacher un gestionnaire d'événement 'input' pour mettre à jour le montant total
+            betElement.querySelector('input.input-bet-amount').addEventListener('input', updateTotalAmount);
         });
 
-        // Disable buttons based on betsData
+        // La mise à jour initiale du montant total est déclenchée ici
+        updateTotalAmount();
+
+        // Désactiver les boutons basés sur betsData, comme vous l'avez fait.
         const allButtons = document.querySelectorAll('.button');
         allButtons.forEach(button => {
             const matchId = button.getAttribute('data-match');
             button.disabled = betsData.some(bet => bet.match === matchId);
         });
     }
-
-
-
 
     renderBets();
 });
