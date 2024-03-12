@@ -72,6 +72,12 @@ class FootballData
                 $opponent_score = $homeTeamScore;
             }
 
+            if ($status == 'FINISHED' && (isset($homeTeamScore) || isset($awayTeamScore))) {
+                $victorious_team_id = ($homeTeamScore > $awayTeamScore) ? $homeTeamId : (($homeTeamScore < $awayTeamScore) ? $awayTeamId : 0);
+            } else {
+                $victorious_team_id = null;
+            }
+
             // Check if the record already exists based on the date
             $existingRecordQuery = "SELECT * FROM $tableName WHERE `date` = :utcDate";
             $existingRecordStmt = $this->conn->prepare($existingRecordQuery);
@@ -85,7 +91,8 @@ class FootballData
                                 `opponent_team_id` = :opponent_team_id,
                                 `opponent_team_name` = :opponent_team_name,
                                 `OL_score` = :OL_score,
-                                `opponent_score` = :opponent_score
+                                `opponent_score` = :opponent_score,
+                                `victorious_team_id` = :victorious_team_id
                                 WHERE `date` = :utcDate";
 
                 $updateStmt = $this->conn->prepare($updateQuery);
@@ -93,9 +100,9 @@ class FootballData
             } else {
                 // If record does not exist, insert a new record
                 $updateQuery = "INSERT INTO $tableName 
-                                (`date`, `status`, `opponent_team_id`, `opponent_team_name`,`OL_score`, `opponent_score`)
+                                (`date`, `status`, `opponent_team_id`, `opponent_team_name`,`OL_score`, `opponent_score`, `victorious_team_id`)
                                 VALUES
-                                (:utcDate, :status, :opponent_team_id, :opponent_team_name,:OL_score, :opponent_score)";
+                                (:utcDate, :status, :opponent_team_id, :opponent_team_name,:OL_score, :opponent_score, :victorious_team_id)";
 
                 $updateStmt = $this->conn->prepare($updateQuery);
             }
@@ -107,6 +114,7 @@ class FootballData
             $updateStmt->bindParam(':opponent_team_name', $opponent_team_name);
             $updateStmt->bindParam(':OL_score', $OL_score);
             $updateStmt->bindParam(':opponent_score', $opponent_score);
+            $updateStmt->bindParam(':victorious_team_id', $victorious_team_id);
 
             // Execute the update/insert query
             $updateStmt->execute();
