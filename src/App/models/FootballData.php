@@ -50,9 +50,9 @@ class FootballData
             $utcDateFormatted = $utcDate->format('d/m/Y');
             $status = $matchInfo['status'];
             $homeTeamId = $matchInfo['homeTeam']['id'];
-            $homeTeamName = $matchInfo['homeTeam']['name'];
+            $homeTeamName = $matchInfo['homeTeam']['shortName'];
             $awayTeamId = $matchInfo['awayTeam']['id'];
-            $awayTeamName = $matchInfo['awayTeam']['name'];
+            $awayTeamName = $matchInfo['awayTeam']['shortName'];
             if (isset($matchInfo['score']['fullTime']['home']) && isset($matchInfo['score']['fullTime']['away'])) {
                 $homeTeamScore = $matchInfo['score']['fullTime']['home'];
                 $awayTeamScore = $matchInfo['score']['fullTime']['away'];
@@ -153,6 +153,15 @@ class FootballData
         $rqt = "SELECT status
             FROM Football_match
             WHERE match_id = $match_id";
+        $stmt = $this->conn->prepare($rqt);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function GetAllTeams()
+    {
+        $rqt = "SELECT distinct opponent_team_id, opponent_team_name
+        FROM Football_match";
         $stmt = $this->conn->prepare($rqt);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

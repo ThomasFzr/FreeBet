@@ -7,14 +7,16 @@ class AddMatchController
             require_once __DIR__ . '/../models/FootballData.php';
             $footballData = new FootballData();
 
+            $selectedValue = $_POST['selectedTeam'];
+            list($opponent_team_id, $opponent_team_name) = explode('|', $selectedValue);
 
             $matchesInfo = [
                 'matches' => [
                     [
                         'utcDate' => $_POST['date'],
                         'status' => $_POST['status'],
-                        'homeTeam' => ['id' => 523],
-                        'awayTeam' => ['id' => $_POST['opponent-id']],
+                        'homeTeam' => ['id' => 523, 'shortName' => "OL"],
+                        'awayTeam' => ['id' => $opponent_team_id, 'shortName' => $opponent_team_name],
                         'OL_score'
                     ],
                 ]
