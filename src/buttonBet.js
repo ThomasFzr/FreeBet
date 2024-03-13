@@ -4,6 +4,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // Sample data for bets
     const betsData = [];
 
+
+    var initialCoins = parseInt(document.getElementById('coinDiv').getAttribute('data-coin'), 10);
+    var currentCoins = initialCoins; // Ceci gardera la trace du nombre actuel de coins après les paris
+
+
     // Function to add a bet
     window.addBet = function (button, match, opponent, bet, betName, amount) {
         betsData.push({ match, opponent, bet, betName, amount });
@@ -45,9 +50,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const totalBetAmountMessage = document.getElementById('totalBetAmountMessage');
         if (totalBetAmountMessage) {
-            totalBetAmountMessage.textContent = `Total des mises : ${totalAmount}`;
+            totalBetAmountMessage.textContent = `credit parier : ${totalAmount}`;
         }
+
+        // Déduire le montant total des paris du nombre initial de coins
+        currentCoins = initialCoins - totalAmount;
+
+
+        // Mettre à jour l'affichage des coins
+        const coinsElement = document.getElementById('coinDiv');
+        if (coinsElement) {
+            coinsElement.textContent = `Coins restants : ${currentCoins}`;
+        }
+
+        // Vous pourriez également vouloir mettre à jour l'attribut 'data-coin' si nécessaire
+        coinsElement.setAttribute('data-coin', currentCoins.toString());
+   
+
+
     }
+
+    var coin = document.getElementById('coinDiv').getAttribute('data-coin');
+    console.log("le nombre de coin est de :"+coin);
 
     function renderBets() {
         betsContainer.innerHTML = '';
