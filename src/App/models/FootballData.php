@@ -71,19 +71,16 @@ class FootballData
                 $OL_score = $awayTeamScore;
                 $opponent_score = $homeTeamScore;
             }
-
             if ($status == 'FINISHED' && (isset($homeTeamScore) || isset($awayTeamScore))) {
                 $victorious_team_id = ($homeTeamScore > $awayTeamScore) ? $homeTeamId : (($homeTeamScore < $awayTeamScore) ? $awayTeamId : 0);
             } else {
                 $victorious_team_id = null;
             }
-
             // Check if the record already exists based on the date
             $existingRecordQuery = "SELECT * FROM $tableName WHERE `date` = :utcDate";
             $existingRecordStmt = $this->conn->prepare($existingRecordQuery);
             $existingRecordStmt->bindParam(':utcDate', $utcDateFormatted);
             $existingRecordStmt->execute();
-
             if ($existingRecordStmt->rowCount() > 0) {
                 // If record exists, update the values
                 $updateQuery = "UPDATE $tableName SET 
@@ -106,7 +103,6 @@ class FootballData
 
                 $updateStmt = $this->conn->prepare($updateQuery);
             }
-
             // Bind parameters for update/insert
             $updateStmt->bindParam(':utcDate', $utcDateFormatted);  // Add this line
             $updateStmt->bindParam(':status', $status);

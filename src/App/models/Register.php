@@ -21,6 +21,7 @@ class Register
         $stmt->bindParam(":mail", $mail, PDO::PARAM_STR);
         $coin = 100;
 
+
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
             $_SESSION['errorMsg'] = "Un compte existe déjà avec cette adresse mail.";
