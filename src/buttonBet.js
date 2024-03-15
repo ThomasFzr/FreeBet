@@ -56,22 +56,21 @@ document.addEventListener('DOMContentLoaded', function () {
         // Déduire le montant total des paris du nombre initial de coins
         currentCoins = initialCoins - totalAmount;
 
-
         // Mettre à jour l'affichage des coins
         const coinsElement = document.getElementById('coinDiv');
         if (coinsElement) {
             coinsElement.textContent = `Coins restants : ${currentCoins}`;
         }
+        // Mettre à jour le champ caché avec la nouvelle valeur de currentCoins
+        document.getElementById('currentCoinsField').value = currentCoins.toString();
 
-        // Vous pourriez également vouloir mettre à jour l'attribut 'data-coin' si nécessaire
-        coinsElement.setAttribute('data-coin', currentCoins.toString());
-   
+
 
 
     }
 
     var coin = document.getElementById('coinDiv').getAttribute('data-coin');
-    console.log("le nombre de coin est de :"+coin);
+    console.log("le nombre de coin est de :" + coin);
 
     function renderBets() {
         betsContainer.innerHTML = '';
@@ -108,6 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
             button.disabled = betsData.some(bet => bet.match === matchId);
         });
     }
+    
 
     renderBets();
 });
