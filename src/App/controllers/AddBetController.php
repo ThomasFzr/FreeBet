@@ -16,9 +16,11 @@ class AddBetController
 
     public function addBet()
     {
+        // Mettre à jour les pièces de l'utilisateur en fonction des paris effectués
         // Vérifier si l'utilisateur est connecté
         if (isset($_SESSION['userID'])) {
             // Vérifier s'il y a des paris à ajouter
+            
             if (isset($_POST['match_id'])) {
                 try {
                     foreach ($_POST['match_id'] as $index => $matchId) {
@@ -32,7 +34,6 @@ class AddBetController
                     $_SESSION['successMsg'] = "Paris ajouté(s).";
                 } catch (Exception $e) {
                     $_SESSION['errorMsg'] = "Une erreur s'est produite lors de l'ajout des paris.";
-                    // Gérer ou journaliser l'exception si nécessaire
                 }
             } else {
                 $_SESSION['errorMsg'] = "Aucun paris à ajouter.";

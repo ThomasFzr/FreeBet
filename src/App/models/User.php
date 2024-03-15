@@ -50,7 +50,7 @@ class User
             $stmt->bindParam(':name', $name, PDO::PARAM_STR);
             $stmt->bindParam(':surname', $surname, PDO::PARAM_STR);
             $stmt->bindParam(':phoneNbr', $phoneNbr, PDO::PARAM_STR);
-            $coin = 100;
+            // $coin = 100;
             $stmt->bindParam(':coin', $coin, PDO::PARAM_INT);
 
             if ($stmt->execute()) {
