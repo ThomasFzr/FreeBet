@@ -16,7 +16,9 @@
 				</thead>
 				<tbody>
 					{% for footballMatch in notFinishedfootballMatches %}
+					
 					<tr>
+
 						<td>{{footballMatch.date}}</td>
 						<td>{{footballMatch.status}}</td>
 						<td>
@@ -42,9 +44,11 @@
 			</div>
 			<div class="bet-line-container">
 				<form action="/processAddBet" method="post">
-					<div id="bets-tbody"></div>
-
-
+					<div id="bets-tbody">
+						<!-- Your dynamically generated bet elements go here -->
+					</div>
+					<!-- Hidden input field to store the total bet amount -->
+					<input type="hidden" name="totalBetAmount" id="totalBetAmount" value="">
 					<button class="button" onclick="submitBets()">Parier</button>
 				</form>
 				<div id="totalBetAmountMessage"></div>

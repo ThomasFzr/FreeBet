@@ -1,8 +1,8 @@
 <?php
 class Connection
 {
-
     private $conn;
+
     function __construct()
     {
         require_once __DIR__ . '/../models/Database.php';
@@ -10,7 +10,7 @@ class Connection
         $this->conn = $db->conn;
     }
 
-    //Login and get user info
+    // Login and get user info
     public function authenticateUser($mail, $password)
     {
         $stmt = $this->conn->prepare("SELECT * FROM User WHERE mail = :mail");
@@ -25,7 +25,8 @@ class Connection
                 $_SESSION['userID'] = $row['user_id'];
                 $_SESSION['surname'] = $row['surname'];
                 $_SESSION['isAdmin'] = $row['isAdmin'];
-                $_SESSION['coin'] = $row['coin'];
+                $_SESSION['coin'] = $row['coin']; // Stocker les pièces de l'utilisateur dans $_SESSION['coin']
+                $_SESSION['coin_user'] = $row['coin']; // Stocker les pièces de l'utilisateur dans $_SESSION['coin_user']
 
                 return true;
             } else {
