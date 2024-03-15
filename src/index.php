@@ -20,12 +20,14 @@ if (isset($_SESSION['userID'])) {
     $isConnected = true;
     $twig->addGlobal('isConnected', $isConnected);
 }
-
 if (isset($_SESSION['coin'])) {
     $coin = $_SESSION['coin'];
     $twig->addGlobal('coin', $coin);
 }
-
+if (isset($_SESSION['coin_user'])) {
+    $coin_user = $_SESSION['coin_user']; 
+    $twig->addGlobal('coin_user', $coin_user);
+}
 if (isset($_SESSION['surname'])) {
     $surname = $_SESSION['surname'];
     $twig->addGlobal('surname', $surname);
@@ -106,8 +108,11 @@ switch ($urlPath) {
         break;
 
     case '/processAddBet':
-        $controller = new AddBetController();
-        $controller->AddBet();
+        // $controller = new AddBetController();
+        // $controller->AddBet();
+        $addBetController = new AddBetController($twig);
+        // Call the addBet method on the controller instance
+        $addBetController->addBet();
         break;
 
     case '/football':
