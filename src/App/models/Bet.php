@@ -59,18 +59,3 @@ class Bet
         
     }
 }
-
-// Récupérer l'ID de l'utilisateur connecté et le montant total du pari depuis les données postées
-$userID = isset($_SESSION['userID']) ? $_SESSION['userID'] : null;
-$totalBetAmount = isset($_POST['totalBetAmount']) ? $_POST['totalBetAmount'] : null;
-
-// Instancier la classe Bet avec la connexion à la base de données
-require_once __DIR__ . '/../models/Database.php';
-$db = new Database();
-$conn = $db->conn;
-$bet = new Bet($conn);
-
-// Appeler la méthode pour mettre à jour le solde des pièces de l'utilisateur
-if ($userID !== null && $totalBetAmount !== null) {
-    $bet->updateCoinFromBet($userID, $totalBetAmount);
-}
