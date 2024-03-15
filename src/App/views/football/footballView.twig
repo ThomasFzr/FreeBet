@@ -1,5 +1,9 @@
 {% extends "templates/template.twig" %}
 
+{% block head %}
+	<link rel="stylesheet" href="App/views/football/football.css">
+{% endblock %}
+
 {% block content %}
 	<br>
 	<div id="football-matches-holder">
@@ -34,21 +38,21 @@
 				</table>
 			</div>
 			<div class="bets-container">
-			<div class="bet-title">
-				<h2>Sélections</h2>
+				<div class="bet-title">
+					<h2>Sélections</h2>
+				</div>
+				<div class="bet-line-container">
+					<form action="/processAddBet" method="post">
+						<div
+							id="bets-tbody"><!-- Your dynamically generated bet elements go here -->
+						</div>
+						<!-- Hidden input field to store the total bet amount -->
+						<input type="hidden" name="totalBetAmount" id="totalBetAmount" value="">
+						<button class="button" onclick="submitBets()">Parier</button>
+					</form>
+					<div id="totalBetAmountMessage"></div>
+				</div>
 			</div>
-			<div class="bet-line-container">
-				<form action="/processAddBet" method="post">
-					<div id="bets-tbody">
-						<!-- Your dynamically generated bet elements go here -->
-					</div>
-					<!-- Hidden input field to store the total bet amount -->
-					<input type="hidden" name="totalBetAmount" id="totalBetAmount" value="">
-					<button class="button" onclick="submitBets()">Parier</button>
-				</form>
-				<div id="totalBetAmountMessage"></div>
-			</div>
-		</div>
 		</div><br>
 		<div class="finished-matches">
 			<h2>Finished matches</h2><br>
@@ -87,10 +91,10 @@
 				</tbody>
 			</table>
 		</div>
-		
+
 	</div><br>
-	
+
 {% endblock %}{# Footer #}{% block footer%}
 	<script src="buttonBet.js"></script>
-	{% include "footerView.twig" %}
+	{% include "templates/footerView.twig" %}
 {% endblock %}

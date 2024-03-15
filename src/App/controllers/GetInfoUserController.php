@@ -15,7 +15,7 @@ class GetInfoUserController
             $user = new User();
 
             $infoUser = $user->getUserInfo($_SESSION['mail']);
-            echo $this->twig->render('detailsAccountView.twig', ['infoUser' => $infoUser]);
+            echo $this->twig->render('user/detailsAccountView.twig', ['infoUser' => $infoUser]);
         } else {
             header('Location: /connection');
         }

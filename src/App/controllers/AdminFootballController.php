@@ -17,7 +17,7 @@ class AdminFootballController
             $notFinishedfootballMatches = $football->GetNotFinishedFootballMatches();
             $allTeams = $football->GetAllTeams();
 
-            echo $this->twig->render('adminFootballView.twig', [
+            echo $this->twig->render('adminFootball/adminFootballView.twig', [
                 'finishedFootballMatches' => $finishedFootballMatches,
                 'notFinishedfootballMatches' => $notFinishedfootballMatches,
                 'allTeams' => $allTeams

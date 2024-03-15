@@ -25,7 +25,7 @@ if (isset($_SESSION['coin'])) {
     $twig->addGlobal('coin', $coin);
 }
 if (isset($_SESSION['coin_user'])) {
-    $coin_user = $_SESSION['coin_user']; 
+    $coin_user = $_SESSION['coin_user'];
     $twig->addGlobal('coin_user', $coin_user);
 }
 if (isset($_SESSION['surname'])) {
@@ -62,18 +62,18 @@ switch ($urlPath) {
         $controller->getFootballMatches();
         $coin = new AddCoinController();
         $coin->AddCoin();
-        echo $twig->render('homeView.twig');
+        echo $twig->render('home/homeView.twig');
         break;
 
     case '/connection':
-        echo $twig->render('connectionView.twig');
+        echo $twig->render('connectionRegister/connectionView.twig');
         break;
     case '/profile':
         $userProfile = new UserProfileController(); // Passez l'instance de Twig si nécessaire
         break;
 
     case '/inscription':
-        echo $twig->render('registerView.twig');
+        echo $twig->render('connectionRegister/registerView.twig');
         break;
 
     case '/processLogin':
@@ -94,7 +94,7 @@ switch ($urlPath) {
         break;
 
     case '/shop':
-        echo $twig->render('shopView.twig');
+        echo $twig->render('shop/shopView.twig');
         break;
 
     case '/admin':
@@ -102,7 +102,7 @@ switch ($urlPath) {
         $controller->AdminController();
         break;
 
-    case '/admin/football':
+    case '/adminFootball':
         $controller = new AdminFootballController($twig);
         $controller->AdminFootball();
         break;

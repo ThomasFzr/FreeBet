@@ -1,7 +1,8 @@
 {% extends "templates/template.twig" %}
-{% block footer %}
-	{% include "footerView.twig" %}
+{% block head %}
+	<link rel="stylesheet" href="App/views/home/home.css">
 {% endblock %}
+
 
 {% block content %}
 
@@ -102,3 +103,8 @@
 		</a>
 	</div>
 </div>{% endblock %}
+
+
+{% block footer %}
+	{% include "templates/footerView.twig" %}
+{% endblock %}

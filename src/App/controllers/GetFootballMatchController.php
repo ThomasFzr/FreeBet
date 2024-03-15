@@ -15,7 +15,7 @@ class GetFootballMatchController
         $finishedFootballMatches = $football->GetFinishedFootballMatches();
         $notFinishedfootballMatches = $football->GetNotFinishedFootballMatches();
 
-        echo $this->twig->render('footballView.twig', [
+        echo $this->twig->render('football/footballView.twig', [
             'finishedFootballMatches' => $finishedFootballMatches,
             'notFinishedfootballMatches' => $notFinishedfootballMatches
         ]);
