@@ -1,100 +1,102 @@
 {% extends "templates/template.twig" %}
 
 {% block head %}
-	<link rel="stylesheet" href="App/views/football/football.css">
+<link rel="stylesheet" href="App/views/football/football.css">
 {% endblock %}
 
 {% block content %}
-	<br>
-	<div id="football-matches-holder">
-		<h1>FOOTBALL</h1><br>
-		<div class="football-matches-first-holder">
-			<div id="football-matches">
-				<table>
-					<thead>
-						<tr>
-							<th>Date</th>
-							<th>Status</th>
-							<th colspan="3">Parier</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for footballMatch in notFinishedfootballMatches %}
-							<tr>
-								<td>{{footballMatch.date}}</td>
-								<td>{{footballMatch.status}}</td>
-								<td>
-									<button class="button" data-match="{{footballMatch.match_id}}" onclick="addBet(this, '{{footballMatch.match_id}}', '{{footballMatch.opponent_team_name}}', '{{footballMatch.opponent_team_id}}', '{{footballMatch.opponent_team_name}}')">{{footballMatch.opponent_team_name}}</button>
-								</td>
-								<td>
-									<button class="button" data-match="{{footballMatch.match_id}}" onclick="addBet(this, '{{footballMatch.match_id}}', '{{footballMatch.opponent_team_name}}', 'Draw', 'Draw')">Draw</button>
-								</td>
-								<td>
-									<button class="button" data-match="{{footballMatch.match_id}}" onclick="addBet(this, '{{footballMatch.match_id}}', '{{footballMatch.opponent_team_name}}', '523', 'OL')">OL</button>
-								</td>
-							</tr>
-						{% endfor %}
-					</tbody>
-				</table>
-			</div>
-			<div class="bets-container">
-				<div class="bet-title">
-					<h2>Sélections</h2>
-				</div>
-				<div class="bet-line-container">
-					<form action="/processAddBet" method="post">
-						<div
-							id="bets-tbody"><!-- Your dynamically generated bet elements go here -->
-						</div>
-						<!-- Hidden input field to store the total bet amount -->
-						<input type="hidden" name="totalBetAmount" id="totalBetAmount" value="">
-						<button class="button" onclick="submitBets()">Parier</button>
-					</form>
-					<div id="totalBetAmountMessage"></div>
-				</div>
-			</div>
-		</div><br>
-		<div class="finished-matches">
-			<h2>Finished matches</h2><br>
+<br>
+<div id="football-matches-holder">
+	<h1>FOOTBALL</h1><br>
+	<div class="football-matches-first-holder">
+		<div id="football-matches">
 			<table>
 				<thead>
 					<tr>
 						<th>Date</th>
 						<th>Status</th>
-						<th>Opponent Team</th>
-						<th>OL Score</th>
-						<th>Opponent Score</th>
-						<th>Victorious team</th>
+						<th colspan="3">Parier</th>
 					</tr>
 				</thead>
 				<tbody>
-					{% for footballMatch in finishedFootballMatches %}
-						<tr>
-							<td>{{footballMatch.date}}</td>
-							<td>{{footballMatch.status}}</td>
-							<td>{{footballMatch.opponent_team_name}}</td>
-							<td>{{footballMatch.OL_score}}</td>
-							<td>{{footballMatch.opponent_score}}</td>
-							<td>
-
-								{% if footballMatch.victorious_team_id == 523%}
-									OL
-								{% elseif footballMatch.victorious_team_id == footballMatch.opponent_team_id %}
-									{{footballMatch.opponent_team_name}}
-								{% else %}
-									Draw
-								{% endif %}
-
-							</td>
-						</tr>
+					{% for footballMatch in notFinishedfootballMatches %}
+					<tr>
+						<td>{{footballMatch.date}}</td>
+						<td>{{footballMatch.status}}</td>
+						<td>
+							<button class="button" data-match="{{footballMatch.match_id}}"
+								onclick="addBet(this, '{{footballMatch.match_id}}', '{{footballMatch.opponent_team_name}}', '{{footballMatch.opponent_team_id}}', '{{footballMatch.opponent_team_name}}')">{{footballMatch.opponent_team_name}}</button>
+						</td>
+						<td>
+							<button class="button" data-match="{{footballMatch.match_id}}"
+								onclick="addBet(this, '{{footballMatch.match_id}}', '{{footballMatch.opponent_team_name}}', 'Draw', 'Draw')">Draw</button>
+						</td>
+						<td>
+							<button class="button" data-match="{{footballMatch.match_id}}"
+								onclick="addBet(this, '{{footballMatch.match_id}}', '{{footballMatch.opponent_team_name}}', '523', 'OL')">OL</button>
+						</td>
+					</tr>
 					{% endfor %}
 				</tbody>
 			</table>
 		</div>
-
+		<div class="bets-container">
+			<div class="bet-title">
+				<h2>Sélections</h2>
+			</div>
+			<div class="bet-line-container">
+				<form action="/processAddBet" method="post">
+					<div id="bets-tbody"><!-- Your dynamically generated bet elements go here -->
+					</div>
+					<!-- Hidden input field to store the total bet amount -->
+					<input type="hidden" name="totalBetAmount" id="totalBetAmount" value="">
+					<button class="button" onclick="submitBets()">Parier</button>
+				</form>
+				<div id="totalBetAmountMessage"></div>
+			</div>
+		</div>
 	</div><br>
+	<div class="finished-matches">
+		<h2>Finished matches</h2><br>
+		<table>
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Status</th>
+					<th>Opponent Team</th>
+					<th>OL Score</th>
+					<th>Opponent Score</th>
+					<th>Victorious team</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for footballMatch in finishedFootballMatches %}
+				<tr>
+					<td>{{footballMatch.date}}</td>
+					<td>{{footballMatch.status}}</td>
+					<td>{{footballMatch.opponent_team_name}}</td>
+					<td>{{footballMatch.OL_score}}</td>
+					<td>{{footballMatch.opponent_score}}</td>
+					<td>
+
+						{% if footballMatch.victorious_team_id == 523%}
+						OL
+						{% elseif footballMatch.victorious_team_id == footballMatch.opponent_team_id %}
+						{{footballMatch.opponent_team_name}}
+						{% else %}
+						Draw
+						{% endif %}
+
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+</div><br>
 
 {% endblock %}{# Footer #}{% block footer%}
-	<script src="buttonBet.js"></script>
-	{% include "templates/footerView.twig" %}
+<script src="buttonBet.js"></script>
+{% include "templates/footerView.twig" %}
 {% endblock %}
