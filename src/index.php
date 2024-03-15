@@ -91,6 +91,10 @@ switch ($urlPath) {
         $controller->getInfoUser();
         break;
 
+    case '/shop':
+        echo $twig->render('shopView.twig');
+        break;
+
     case '/admin':
         $controller = new AdminController($twig);
         $controller->AdminController();
