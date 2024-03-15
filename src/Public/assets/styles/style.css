@@ -30,6 +30,7 @@ footer {
     color: white;
     padding-left: 15px;
     padding-right: 15px;
+    padding-top: 2  px;
     height: 10%;
 }
 
@@ -193,6 +194,10 @@ footer {
     text-align: center;
 }
 
+#freebet-sentence h1{
+   font-size: 125px;
+}
+
 #sport-title {
     background-color: #009966;
     font-weight: bold;
@@ -213,67 +218,75 @@ footer {
 
 /* Sports cards  */
 .card {
-    position: relative;
-    width: 220px;
-    height: 320px;
-    background: mediumturquoise;
+    width: 190px;
+    height: 254px;
     background-image: url("../images/logoFreebet.png");
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 25px;
-    font-weight: bold;
+    background-position: center;
+    background-size: cover; 
+    transition: all 0.4s;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 5px  rgba(0, 0, 0, 0.705);
+    font-size: 30px;
+    font-weight: 900;
+    color: white;
+  }
+  
+/* .card:first-child{
+    /background-image: url("../images/logoOL.png"); 
+} */
+
+  .card:hover {
     border-radius: 15px;
     cursor: pointer;
-    display: inline-block;
-    margin: 30px 5px 0 5px;
-    text-align: center;
-}
-
-.card::before,
-.card::after {
-    position: absolute;
-    content: "";
-    width: 20%;
-    height: 20%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 25px;
-    font-weight: bold;
-    background-color: lightblue;
-    transition: all 0.5s;
-}
-
-.card::before {
-    top: 0;
-    right: 0;
-    border-radius: 0 15px 0 100%;
-}
-
-.card::after {
-    bottom: 0;
-    left: 0;
-    border-radius: 0 100% 0 15px;
-}
-
-.card:hover::before,
-.card:hover:after {
-    width: 100%;
+    transform: scale(1.2);
+    box-shadow: 0px 0px 10px 5px  rgba(0, 0, 0, 0.705);
+    background: rgb(103, 151, 255);
+  }
+  
+  .first-content {
     height: 100%;
+    width: 100%;
+    transition: all 0.4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
     border-radius: 15px;
-    transition: all 0.5s;
-}
-
-.card:hover:after {
-    content: "PARIER";
-}
+  }
+  
+  .card:hover .first-content {
+    height: 0px;
+    opacity: 0;
+  }
+  
+  .second-content {
+    height: 0%;
+    width: 100%;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    transition: all 0.4s;
+    font-size: 0px;
+    transform: rotate(90deg) scale(-1);
+  }
+  
+  .card:hover .second-content {
+    opacity: 1;
+    height: 100%;
+    font-size: 1.8rem;
+    transform: rotate(0deg);
+  }
+  
 
 /* Zone cards */
 #zone-cards {
     margin: auto;
     width: 85%;
     text-align: center;
+    display: flex;
+    justify-content: space-around;
 }
 
 #zone-cards a {
@@ -296,10 +309,6 @@ footer {
     padding-top: 4vh;
     padding-left: 15vw;
     /* background-color: #a6ff00; */
-}
-
-.all-matches{
-    /* background-color: red; */
 }
 
 /* Football matches */
@@ -346,6 +355,7 @@ footer {
 
 .bets-container .button{
     margin-top: 2vh;
+    margin-bottom: 2vh;
     margin-left: 1vw;
 }
 
