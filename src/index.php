@@ -20,11 +20,6 @@ if (isset($_SESSION['userID'])) {
     $isConnected = true;
     $twig->addGlobal('isConnected', $isConnected);
 }
- 
-if (isset($_SESSION['coin'])) {
-    $coin = $_SESSION['coin'];
-    $twig->addGlobal('coin', $coin);
-}
 
 if (isset($_SESSION['coin_user'])) {
     $coin_user = $_SESSION['coin_user'];
