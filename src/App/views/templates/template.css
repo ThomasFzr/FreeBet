@@ -188,12 +188,20 @@ footer {
     }
 }
 
-/* idk */
+/* images */
 
 #icon-red-bin {
     width: 25px;
     text-align: center;
 }
 
+#icon-plus{
+    width: 25px;
+    /* text-align: center; */
+    /* padding-top: 2vh; */
+    /* margin-top: 1vh; */
+}
 
-
+#link-shop{
+    text-decoration: none;
+}

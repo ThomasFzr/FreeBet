@@ -12,11 +12,14 @@
 					Test</a>
 				{% if isConnected %}
 					<div class="wrapper">
-						<div class="btn-header">
-							<div id="coinDiv" data-coin="{{ coin_user }}" style="color:black ;">credit :
-								{{ coin_user }}
+						<a href="/shop" id="link-shop">
+							<div class="btn-header">
+								<div id="coinDiv" data-coin="{{ coin_user }}" style="color:black ;">credit :
+									{{ coin_user }}
+									<img src="Public/assets/images/logoPlus.png" alt="logo-plus" id="icon-plus">
+								</div>
 							</div>
-						</div>
+						</a>
 					</div>
 					{% if isAdmin %}
 						<div class="wrapper">

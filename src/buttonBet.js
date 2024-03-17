@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const totalBetAmountMessage = document.getElementById('totalBetAmountMessage');
         if (totalBetAmountMessage) {
-            totalBetAmountMessage.textContent = `Crédit parier : ${totalAmount}`;
+            totalBetAmountMessage.textContent = `Crédit(s) parié(s) : ${totalAmount}`;
         }
         // if (`${totalAmount}` < 0) {
 
@@ -65,8 +65,14 @@ document.addEventListener('DOMContentLoaded', function () {
         // Mettre à jour l'affichage des coins
         const coinsElement = document.getElementById('coinDiv');
         if (coinsElement) {
-            coinsElement.textContent = `Coins restants : ${currentCoins}`;
+            coinsElement.textContent = `credit : ${currentCoins} `;
+            const img = document.createElement('img');
+            img.src = 'Public/assets/images/logoPlus.png';
+            img.alt = 'logo-plus';
+            img.id = 'icon-plus';
+            coinsElement.appendChild(img);
         }
+
         // Mettre à jour le champ caché avec la nouvelle valeur de currentCoins
         document.getElementById('currentCoinsField').value = currentCoins.toString();
 
