@@ -1,33 +1,56 @@
 {% extends "templates/template.twig" %}
 
-{% block content %}
-<h3>Mon profil: </h3>
-<div id="profile-user">
-    <form action="/editInfoUser" method="post">
-        Adresse mail :
-        <input type="email" value="{{infoUser.mail}}" name="mail" required>
-        <input type="image" src="Public/assets/images/iconeStyloBleu.png" alt="iconeStyloBleu" id="icon-red-bin">
-    </form><br>
-    <form action="/editInfoUser" method="post">
-        Mdp :
-        <input type="text" value="{{infoUser.pwd}}" name="pwd" required>
-        <input type="image" src="Public/assets/images/iconeStyloBleu.png" alt="iconeStyloBleu" id="icon-red-bin">
-    </form><br>
-    <form action="/editInfoUser" method="post">
-        Nom :
-        <input type="text" value="{% if infoUser.name %}{{infoUser.name}}{% else %}Pas encore définis{% endif %}" name="name" required>
-        <input type="image" src="Public/assets/images/iconeStyloBleu.png" alt="iconeStyloBleu" id="icon-red-bin">
-    </form><br>
-    <form action="/editInfoUser" method="post">
-        Prénom :
-        <input type="text" value="{% if infoUser.surname %}{{infoUser.surname}}{% else %}Pas encore définis{% endif %}" name="surname" required>
-        <input type="image" src="Public/assets/images/iconeStyloBleu.png" alt="iconeStyloBleu" id="icon-red-bin">
-    </form><br>
-    <form action="/editInfoUser" method="post">
-        Numéro de tél :
-        <input type="text" pattern="^0\d{9}$" value="{% if infoUser.phoneNbr != null %} {{infoUser.phoneNbr}} {%else%} Pas défini {%endif%}" name="phoneNbr" required>
-        <input type="image" src="Public/assets/images/iconeStyloBleu.png" alt="iconeStyloBleu" id="icon-red-bin">
-    </form><br>
-</div>
+{% block head %}
+	<link rel="stylesheet" href="App/views/user/detailsAccount.css">
+{% endblock %}
 
+{% block content %}
+
+	<div class="container">
+
+		<div class="profile-user-container">
+			<h3>Mon profil:
+			</h3>
+			<div class="form-user">
+				<form action="/editInfoUser" method="post">
+					Adresse mail :
+					<input type="email" value="{{infoUser.mail}}" name="mail" required>
+					<input type="image" src="Public/assets/images/iconeStyloBleu.png" alt="iconeStyloBleu" id="icon-red-bin">
+				</form><br>
+				<form action="/editInfoUser" method="post">
+					Mdp :
+					<input type="text" value="{{infoUser.pwd}}" name="pwd" required>
+					<input type="image" src="Public/assets/images/iconeStyloBleu.png" alt="iconeStyloBleu" id="icon-red-bin">
+				</form><br>
+				<form action="/editInfoUser" method="post">
+					Nom :
+					<input type="text" value="{% if infoUser.name %}{{infoUser.name}}{% else %}Pas encore définis{% endif %}" name="name" required>
+					<input type="image" src="Public/assets/images/iconeStyloBleu.png" alt="iconeStyloBleu" id="icon-red-bin">
+				</form><br>
+				<form action="/editInfoUser" method="post">
+					Prénom :
+					<input type="text" value="{% if infoUser.surname %}{{infoUser.surname}}{% else %}Pas encore définis{% endif %}" name="surname" required>
+					<input type="image" src="Public/assets/images/iconeStyloBleu.png" alt="iconeStyloBleu" id="icon-red-bin">
+				</form><br>
+				<form action="/editInfoUser" method="post">
+					Numéro de tél :
+					<input type="text" pattern="^0\d{9}$" value="{% if infoUser.phoneNbr != null %} {{infoUser.phoneNbr}} {%else%} Pas défini {%endif%}" name="phoneNbr" required>
+					<input type="image" src="Public/assets/images/iconeStyloBleu.png" alt="iconeStyloBleu" id="icon-red-bin">
+				</form><br>
+			</div>
+			<form action="/deconnection">
+				<button class="Btn">
+
+					<div class="sign">
+						<svg viewbox="0 0 512 512">
+							<path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path>
+						</svg>
+					</div>
+
+					<div class="text">DECO</div>
+				</button>
+			</form>
+
+		</div>
+	</div>
 {% endblock %}

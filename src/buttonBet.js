@@ -65,25 +65,20 @@ document.addEventListener('DOMContentLoaded', function () {
         // Mettre à jour l'affichage des coins
         const coinsElement = document.getElementById('coinDiv');
         if (coinsElement) {
-            coinsElement.textContent = `credit : ${currentCoins} `;
-            const img = document.createElement('img');
-            img.src = 'Public/assets/images/logoPlus.png';
-            img.alt = 'logo-plus';
-            img.id = 'icon-plus';
-            coinsElement.appendChild(img);
+            coinsElement.textContent = `${currentCoins} `;
         }
 
         // Mettre à jour le champ caché avec la nouvelle valeur de currentCoins
-        document.getElementById('currentCoinsField').value = currentCoins.toString();
+        // document.getElementById('currentCoinsField').value = currentCoins.toString();
 
         // Mettre à jour le champ caché avec les crédits parier
-        document.getElementById('totalBetAmountField').value = totalAmount.toString();
+        // document.getElementById('totalBetAmountField').value = totalAmount.toString();
 
     }
 
 
     var coin = document.getElementById('coinDiv').getAttribute('data-coin');
-    updateCoin(coin); // Call the updateCoin function with the initial coin value
+    // updateCoin(coin); // Call the updateCoin function with the initial coin value
 
     function renderBets() {
         betsContainer.innerHTML = '';

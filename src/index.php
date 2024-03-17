@@ -66,9 +66,6 @@ switch ($urlPath) {
     case '/connection':
         echo $twig->render('connectionRegister/connectionView.twig');
         break;
-    case '/profile':
-        $userProfile = new UserProfileController(); // Passez l'instance de Twig si nécessaire
-        break;
 
     case '/inscription':
         echo $twig->render('connectionRegister/registerView.twig');
@@ -106,16 +103,13 @@ switch ($urlPath) {
         break;
 
     case '/processAddBet':
-        
         $addBetController = new AddBetController($twig);
         $addBetController->addBet();
         break;
 
     case '/football':
-        
         $controller = new GetFootballMatchController($twig);
         $controller->GetFootballMatch();
-        
         break;
 
     case '/processAddMatch':
