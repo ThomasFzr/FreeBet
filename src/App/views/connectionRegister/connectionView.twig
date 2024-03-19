@@ -6,7 +6,9 @@
 {% endblock %}
 
 {% block content %}
-</br></br><div class="login-box">
+</br></br>
+{# 
+<div class="login-box">
 <p>CONNEXION</p>
 <form action="/processLogin" method="post">
 	<div class="user-box">
@@ -27,4 +29,29 @@
 </form>
 <p>Pas encore inscris?
 	<a href="/inscription" class="a2">M'inscrire</a>
-</p></div>{% endblock %}
+</p></div> #}
+
+<div class="login-box">
+
+<form action="/processLogin" method="post">
+	<div class="card">
+		<a class="signup">CONNEXION</a>
+		<div class="inputBox1">
+			<input type="text" name="email" required="required">
+			<span class="user">Email</span>
+		</div>
+
+
+		<div class="inputBox">
+			<input type="password" name="password" required="required">
+			<span>Password</span>
+		</div>
+
+		<input type="submit" class="enter"></button>
+	<span id="connection-register">
+		Pas encore inscris?
+		<a href='/inscription'>inscription</a>
+	</span>
+</div></form></div>
+
+{% endblock %}

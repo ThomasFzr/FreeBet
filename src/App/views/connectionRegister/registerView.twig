@@ -2,27 +2,44 @@
 
 
 {% block head %}
-<link rel="stylesheet" href="App/views/connectionRegister/connectionRegisterStyle.css">
+	<link rel="stylesheet" href="App/views/connectionRegister/connectionRegisterStyle.css">
 {% endblock %}
 
 {% block content %}
-</br></br>
+</br></br>{# <div class="login-box">
+				  <p>INSCRIPTION</p>
+				  <form action="/processRegister" method="post">
+				    <div class="user-box">
+				      <input type="email" id="email" name="email" required autofocus><i class="validation"><span></span><span></span></i>
+				      <label>Adresse mail</label>
+				    </div>
+				    <div class="user-box">
+				      <input type="password" id="password" name="password" required><i class="validation"><span></span><span></span></i>
+				      <label>Mot de passe</label>
+				    </div>
+				    
+				     <input type="submit" id="register" value="S'INSCRIRE">
+				  </form>
+				  <p>Déjà inscris? <a href="/connection" class="a2">Me connecter</a></p>
+				</div> #}<div class="login-box">
 
-<div class="login-box">
-  <p>INSCRIPTION</p>
-  <form action="/processRegister" method="post">
-    <div class="user-box">
-      <input type="email" id="email" name="email" required autofocus><i class="validation"><span></span><span></span></i>
-      <label>Adresse mail</label>
-    </div>
-    <div class="user-box">
-      <input type="password" id="password" name="password" required><i class="validation"><span></span><span></span></i>
-      <label>Mot de passe</label>
-    </div>
-    
-     <input type="submit" id="register" value="S'INSCRIRE">
-  </form>
-  <p>Déjà inscris? <a href="/connection" class="a2">Me connecter</a></p>
-</div>
+<form action="/processRegister" method="post">
+	<div class="card">
+		<a class="signup">INSCRIPTION</a>
+		<div class="inputBox1">
+			<input type="text" name="email" required="required">
+			<span class="user">Email</span>
+		</div>
 
-{% endblock %}
+
+		<div class="inputBox">
+			<input type="password" name="password" required="required">
+			<span>Password</span>
+		</div>
+
+		<input type="submit" class="enter"></button>
+	<span id="connection-register">
+		Déjà inscris?
+		<a href='/connection'>connexion</a>
+	</span>
+</div></form></div>{% endblock %}
