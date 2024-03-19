@@ -1,3 +1,7 @@
+body{
+    background-color: black;
+}
+
 .login-box {
     position: absolute;
     top: 50%;

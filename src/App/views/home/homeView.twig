@@ -6,12 +6,32 @@
 
 {% block content %}
 
-	<div id="freebet-sentence">
-		<h1>FREEBET</h1>
-		<div class="text">
-			Parier en ligne et défier vos amis
+	{# <div id="freebet-sentence">
+							<h1>FREEBET</h1>
+							<div class="text">
+								Parier en ligne et défier vos amis
+							</div>
+						</div> #}
+
+
+	<div class="all-container">
+
+		<div class="title-container">
+
+			<div class="first-row">
+				<div class="left-container">
+					<div class="l-first-row">FREEBET</div>
+					<div class="l-second-row">PARIER EN LIGNE</div>
+				</div>
+				<div class="right-container">
+					<div class="first-letter">F</div>
+					<div class="second-letter">B</div>
+				</div>
+			</div>
+			<div class="second-row">DEFIER VOS AMIS</div>
 		</div>
 	</div>
+
 
 	<div id="sport-title">SPORT</div>
 
@@ -102,9 +122,5 @@
 			</div>
 		</a>
 	</div>
-</div>{% endblock %}
-
-
-{% block footer %}
-	{% include "templates/footerView.twig" %}
-{% endblock %}
+</div>{% endblock %}{% block footer %}
+{% include "templates/footerView.twig" %}{% endblock %}

@@ -1,5 +1,8 @@
 /* Football matches */
-
+body{
+    background-color: #1E9A8E;
+  }
+  
 #football-matches-holder {
     width: 100%;
     display: flex;
