@@ -56,10 +56,10 @@ $id = $parts[1] ?? null;
 switch ($urlPath) {
     case '':
     case '/':
-        // $controller = new FootballController();
-        // $controller->getFootballMatches();
-        // $coin = new AddCoinController();
-        // $coin->AddCoin();
+        $controller = new FootballController();
+        $controller->getFootballMatches();
+        $coin = new AddCoinController();
+        $coin->AddCoin();
         echo $twig->render('home/homeView.twig');
         break;
 
