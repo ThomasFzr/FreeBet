@@ -3,10 +3,15 @@ body {
 }
 
 .login-box {
+  padding-top: 16vh;
     display: flex;
     justify-content: center;
     align-items: center;
     /* font-weight: 300; */
+}
+
+.login-box input{
+  font-family: "Modak", system-ui;
 }
 
 .signup {
@@ -123,9 +128,10 @@ body {
 
   #connection-register a{
     color: white;
-    text-decoration: none;
+    /* text-decoration: none; */
   }
 
-  #connection-register span{
-    font-size: 14px;
+  #connection-register{
+    font-size: 22px;
+    padding: 0 1vw;
   }

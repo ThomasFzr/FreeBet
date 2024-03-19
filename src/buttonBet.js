@@ -137,12 +137,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 for (let i = 0; i < bet_containers.length; i++) {
                     bet_containers[i].remove()
                 }
-            } else {
-                let bet_containers = document.getElementsByClassName('bets-container');
-                // Change the background color of each bets-container to red
-                for (let i = 0; i < bet_containers.length; i++) {
-                    bet_containers[i].style.backgroundColor = 'white';
-                }
             }
 
             // Log the total and coinUser for debugging

@@ -83,14 +83,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* padding-top: 2vh; */
 }
 
 .profile-user-container {
-  padding-top: 8vh;
+  margin-top: 12vh;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border: 2px solid black;
+  padding: 2vw;
+  border-radius: 25px;
 }
 
 .form-user {

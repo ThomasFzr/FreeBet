@@ -28,7 +28,7 @@ body::-webkit-scrollbar-thumb {
 
 /* set button(top and bottom of the scrollbar) */
 body::-webkit-scrollbar-button {
-    display:none;
+    display: none;
 }
 
 /* Footer */
@@ -273,12 +273,6 @@ footer {
     letter-spacing: 0.6px;
 }
 
-#coinDiv {
-    font-size: 13.5px;
-    color: white;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
 
 .addmoney {
     padding: 1px 15px;
@@ -313,6 +307,9 @@ footer {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    position: fixed;
+    width: 100%;
+    transition: top 0.3s;
 }
 
 .left,
@@ -342,6 +339,10 @@ footer {
     font-size: 30px;
 }
 
+.middle a:hover {
+    border-bottom: 1px solid white;
+}
+
 .right {
     display: flex;
     justify-content: right;
@@ -354,6 +355,7 @@ footer {
     border: 2px solid white;
     padding: 0 1vw;
     border-radius: 25px;
+    display: flex;
 }
 
 #idk,
@@ -361,12 +363,16 @@ footer {
     color: #F5ADE8;
 }
 
+#currency{
+    padding-left: 1vw;
+}
+
 #admin {
     padding-left: 2vw;
     text-decoration: none;
 }
 
-#connection{
+#connection {
     text-decoration: none;
     color: #F5ADE8;
 

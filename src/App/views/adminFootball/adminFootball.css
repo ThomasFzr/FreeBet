@@ -1,4 +1,7 @@
 /* Football matches */
+body {
+    background-color: #1E9A8E;
+}
 
 #football-matches-holder {
     width: 100%;
@@ -115,13 +118,13 @@ th {
 }
 
 .button {
-    color: #ecf0f1;
+    color: #000;
     font-size: 17px;
-    background-color: #e67e22;
-    border: 1px solid #f39c12;
+    background-color: #A7DEF0;
+    border: 1px solid #8ccee4;
     border-radius: 5px;
     padding: 10px;
-    box-shadow: 0px 6px 0px #d35400;
+    box-shadow: 0px 6px 0px #8dc9dd;
     transition: all .1s;
     z-index: 5;
 }
@@ -131,7 +134,7 @@ th {
 }
 
 .button:active {
-    box-shadow: 0px 2px 0px #d35400;
+    box-shadow: 0px 2px 0px #8dc9dd;
     position: relative;
     top: 2px;
 }
@@ -155,6 +158,7 @@ th {
 
 .add-all-match-container {
     display: flex;
+    padding-top: 22vh;
 }
 
 .add-match-holder {

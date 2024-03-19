@@ -3,18 +3,6 @@ body {
   background-color: black;
 }
 
-#freebet-sentence {
-  margin-top: 5%;
-  text-align: center;
-}
-
-#freebet-sentence h1 {
-  font-size: 125px;
-  font-family: "Modak", system-ui;
-  font-weight: 400;
-  font-style: normal;
-}
-
 .all-container {
   display: flex;
   align-items: center;
@@ -24,7 +12,7 @@ body {
   font-weight: 400;
   font-style: normal;
   color: #F5ADE8;
-  padding-top: 8vh;
+  padding-top: 22vh;
 }
 
 .title-container {

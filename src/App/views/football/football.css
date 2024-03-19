@@ -1,14 +1,19 @@
 /* Football matches */
-body{
+body {
     background-color: #1E9A8E;
-  }
-  
+}
+
 #football-matches-holder {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding-top: 16vh;
+}
+
+#football-matches-holder h1 {
+    font-weight: 300;
 }
 
 .football-matches-first-holder {
@@ -53,10 +58,11 @@ body{
     overflow-x: hidden;
     overflow-y: auto;
     height: 90%;
+    padding: 0 1vw;
 }
 
 .bet-line {
-    background-color: rgb(253, 253, 253);
+    background-color: #A7DEF0;
     height: 5%;
     margin-top: 2vh;
     border-radius: 1rem;
@@ -115,16 +121,21 @@ td {
 
 th {
     background-color: #f2f2f2;
+    font-weight: 200;
+}
+
+h2 {
+    font-weight: 200;
 }
 
 .button {
-    color: #ecf0f1;
+    color: black;
     font-size: 17px;
-    background-color: #e67e22;
-    border: 1px solid #f39c12;
+    background-color: #A7DEF0;
+    border: 1px solid #8ccee4;
     border-radius: 5px;
     padding: 10px;
-    box-shadow: 0px 6px 0px #d35400;
+    box-shadow: 0px 6px 0px #8dc9dd;
     transition: all .1s;
     z-index: 5;
 }
@@ -134,24 +145,22 @@ th {
 }
 
 .button:active {
-    box-shadow: 0px 2px 0px #d35400;
+    box-shadow: 0px 2px 0px #8dc9dd;
     position: relative;
     top: 2px;
 }
 
 .button:disabled {
-    background-color: #ddd;
-    /* Use your preferred gray color */
+    background-color: #3a3a3a;
+    box-shadow: 0px 6px 0px #2a2929;
+
     color: #888;
-    /* Adjust text color accordingly */
 }
 
 .delete-icon {
     cursor: pointer;
     color: red;
-    /* Use your preferred color for the delete icon */
     margin-left: 5px;
-    /* Adjust margin as needed */
 }
 
 /* Admin */
