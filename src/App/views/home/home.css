@@ -23,12 +23,12 @@ body {
   font-family: "Modak", system-ui;
   font-weight: 400;
   font-style: normal;
-  color:#F5ADE8;
+  color: #F5ADE8;
   padding-top: 8vh;
 }
 
 .title-container {
-  width: 80%;
+  width: 90%;
 }
 
 .first-row {
@@ -41,7 +41,7 @@ body {
   font-family: "Modak", system-ui;
   font-weight: 400;
   font-style: normal;
-  padding-left: 16vw;
+  padding-left: 20vw;
 }
 
 .l-second-row {
@@ -54,38 +54,46 @@ body {
   align-items: center;
   font-size: 165px;
   transform: rotate(-35deg);
+  width: 10%;
 }
 
-.first-letter{
+.first-letter {
   color: white;
   padding-left: 2vw;
 }
 
-.second-letter{
+.second-letter {
   padding-top: 19vh;
 }
 
 .second-row {
-  padding-left: 12vw;
+  padding-left: 10vw;
 }
 
 
-#sport-title {
-  background-color: #009966;
+#sport {
+  background-color: #1E9A8E;
+
   font-weight: bold;
   text-align: center;
   padding: 25px;
   margin-top: 5%;
-  margin-bottom: 5%;
+  height: 100vh;
 }
 
-#esport-title {
-  background-color: #FF6600;
+#sport h1,
+#esport h1 {
+  color: white;
+  font-size: 150px;
+  font-weight: 300;
+}
+
+#esport {
+  background-color: #A7DEF0;
   font-weight: bold;
   text-align: center;
   padding: 25px;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  height: 100vh;
 }
 
 /* Sports cards  */

@@ -87,6 +87,7 @@ body {
 }
 
 .profile-user-container {
+  padding-top: 8vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
