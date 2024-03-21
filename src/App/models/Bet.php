@@ -99,4 +99,17 @@ class Bet
             }
         }
     }
+
+    public function getBetsFromUser($user_id)
+    {
+        $rqt = "SELECT b.*, f.*, b.victorious_team_id AS victorious_team_id_bet
+        FROM Bet b
+        JOIN Football_match f ON f.match_id = b.match_id
+        WHERE user_id = :user_id";
+        $stmt = $this->conn->prepare($rqt);
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

@@ -9,7 +9,7 @@
 
 		<div class="middle">
 			<a href='/'>home</a>
-			<a href=''>bet</a>
+			<a href='/myBets'>bet</a>
 			<a href='/shop'>shop</a>
 		</div>
 
@@ -19,9 +19,6 @@
 					<div id="coinDiv" data-coin="{{ coin_user }}">{{ coin_user }}</div>
 					<span id="currency">FB</span>
 				</div>
-
-				{# <div id="coinDiv" data-coin="{{ coin_user }}">{{ coin_user }}</div> #}
-
 
 				{% if isAdmin %}
 					<a id='admin' href="/admin">

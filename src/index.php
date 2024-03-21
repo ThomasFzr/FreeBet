@@ -88,6 +88,11 @@ switch ($urlPath) {
         $controller->getInfoUser();
         break;
 
+    case '/myBets':
+        $controller = new BetsFromUserController($twig);
+        $controller->getBets();
+        break;
+
     case '/shop':
         echo $twig->render('shop/shopView.twig');
         break;

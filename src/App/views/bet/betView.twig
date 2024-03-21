@@ -1,0 +1,80 @@
+{% extends "templates/template.twig" %}
+{% block head %}
+	<link rel="stylesheet" href="App/views/bet/bet.css">
+{% endblock %}
+
+
+{% block content %}
+	{% if isConnected %}
+
+		<div class="bet-container">
+			<h2>Vos paris:</h2>
+			<div id="football-matches">
+				<table>
+					<thead>
+						<tr>
+							<th>Date</th>
+							<th>Opponent Team</th>
+							<th>Mise</th>
+							<th>Your bet</th>
+							<th>Victorious team</th>
+							<th>OL Score</th>
+							<th>Opponent Score</th>
+							<th>Result</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for bet in bets %}
+							<tr>
+								<td>{{bet.date}}</td>
+								<td>{{bet.opponent_team_name}}</td>
+								<td>{{bet.coin}}</td>
+								<td>
+
+									{% if bet.victorious_team_id_bet == 523%}
+										OL
+									{% elseif bet.victorious_team_id == bet.opponent_team_id %}
+										{{bet.opponent_team_name}}
+									{% else %}
+										Draw
+									{% endif %}
+								</td>
+								<td>
+
+									{% if bet.status == "FINISHED" %}
+										{% if bet.victorious_team_id == 523 %}
+											OL
+										{% elseif bet.victorious_team_id == bet.opponent_team_id %}
+											{{bet.opponent_team_name}}
+										{% else %}
+											Draw
+										{% endif %}
+									{% else %}
+										---
+									{% endif %}
+								</td>
+								<td>{{bet.OL_score}}</td>
+								<td>{{bet.opponent_score}}</td>
+								<td>
+									{% if bet.status == "FINISHED" %}
+										{% if bet.victorious_team_id == bet.victorious_team_id_bet %}
+											💰
+										{% else %}
+											💸
+										{% endif %}
+									{% endif %}
+								</td>
+
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	{% else %}
+		<div class="bet-container">
+			Connectez-vous pour voir vos paris.
+		</div>
+	{% endif %}
+{% endblock %}

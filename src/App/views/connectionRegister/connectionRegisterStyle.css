@@ -1,137 +1,137 @@
 body {
-    background-color: black;
+  background-color: black;
 }
 
 .login-box {
   padding-top: 16vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* font-weight: 300; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* font-weight: 300; */
 }
 
-.login-box input{
+.login-box input {
   font-family: "Modak", system-ui;
 }
 
 .signup {
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    display: block;
-    font-weight: bold;
-    font-size: x-large;
-    margin-top: 1.5em;
-  }
-  
-  .card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 350px;
-    width: 350px;
-    flex-direction: column;
-    gap: 35px;
-    border-radius: 15px;
-    background: #F5ADE8;
-    box-shadow: 16px 8px 16px #c8c8c8,
-          -16px -8px 32px #fefefe;
-  }
-  
-  .inputBox,
-  .inputBox1 {
-    position: relative;
-    width: 250px;
-  }
-  
-  .inputBox input,
-  .inputBox1 input {
-    width: 100%;
-    padding: 10px;
-    outline: none;
-    border: none;
-    color: white;
-    font-size: 1em;
-    background: transparent;
-    border-left: 2px solid #fff;
-    border-bottom: 2px solid #fff;
-    transition: 0.1s;
-    border-bottom-left-radius: 8px;
-  }
-  
-  .inputBox span,
-  .inputBox1 span {
-    margin-top: 5px;
-    position: absolute;
-    left: 0;
-    transform: translateY(-4px);
-    margin-left: 10px;
-    padding: 10px;
-    pointer-events: none;
-    font-size: 12px;
-    color: white;
-    text-transform: uppercase;
-    transition: 0.5s;
-    letter-spacing: 3px;
-    border-radius: 8px;
-  }
-  
-  .inputBox input:valid~span,
-  .inputBox input:focus~span {
-    transform: translateX(113px) translateY(-15px);
-    font-size: 0.8em;
-    padding: 5px 10px;
-    background: #000;
-    letter-spacing: 0.2em;
-    color: white;
-    border: 2px;
-  }
-  
-  .inputBox1 input:valid~span,
-  .inputBox1 input:focus~span {
-    transform: translateX(156px) translateY(-15px);
-    font-size: 0.8em;
-    padding: 5px 10px;
-    background: #000;
-    letter-spacing: 0.2em;
-    color: white;
-    border: 2px;
-  }
-  
-  .inputBox input:valid,
-  .inputBox input:focus,
-  .inputBox1 input:valid,
-  .inputBox1 input:focus {
-    border: 2px solid white;
-    border-radius: 8px;
-  }
-  
-  .enter {
-    height: 45px;
-    width: 100px;
-    border-radius: 5px;
-    border: 2px solid #fff;
-    cursor: pointer;
-    background-color: transparent;
-    transition: 0.5s;
-    text-transform: uppercase;
-    font-size: 10px;
-    letter-spacing: 2px;
-    margin-bottom: 3em;
-    color:white;
-  }
-  
-  .enter:hover {
-    background-color: rgb(0, 0, 0);
-    color: white;
-  }
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: block;
+  font-weight: 200;
+  font-size: x-large;
+  margin-top: 1.5em;
+}
 
-  #connection-register a{
-    color: white;
-    /* text-decoration: none; */
-  }
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 350px;
+  width: 350px;
+  flex-direction: column;
+  gap: 35px;
+  border-radius: 15px;
+   background: #F5ADE8;
+   box-shadow:  18px 18px 45px #eba6df,
+   -18px -18px 45px #ffb4f1;
+}
 
-  #connection-register{
-    font-size: 22px;
-    padding: 0 1vw;
-  }
+.inputBox,
+.inputBox1 {
+  position: relative;
+  width: 250px;
+}
+
+.inputBox input,
+.inputBox1 input {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border: none;
+  color: white;
+  font-size: 1em;
+  background: transparent;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transition: 0.1s;
+  border-bottom-left-radius: 8px;
+}
+
+.inputBox span,
+.inputBox1 span {
+  margin-top: 5px;
+  position: absolute;
+  left: 0;
+  transform: translateY(-4px);
+  margin-left: 10px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 12px;
+  color: white;
+  text-transform: uppercase;
+  transition: 0.5s;
+  letter-spacing: 3px;
+  border-radius: 8px;
+}
+
+.inputBox input:valid~span,
+.inputBox input:focus~span {
+  transform: translateX(113px) translateY(-15px);
+  font-size: 0.8em;
+  padding: 5px 10px;
+  background: #000;
+  letter-spacing: 0.2em;
+  color: white;
+  border: 2px;
+}
+
+.inputBox1 input:valid~span,
+.inputBox1 input:focus~span {
+  transform: translateX(156px) translateY(-15px);
+  font-size: 0.8em;
+  padding: 5px 10px;
+  background: #000;
+  letter-spacing: 0.2em;
+  color: white;
+  border: 2px;
+}
+
+.inputBox input:valid,
+.inputBox input:focus,
+.inputBox1 input:valid,
+.inputBox1 input:focus {
+  border: 2px solid white;
+  border-radius: 8px;
+}
+
+.enter {
+  height: 45px;
+  width: 100px;
+  border-radius: 5px;
+  border: 2px solid #fff;
+  cursor: pointer;
+  background-color: transparent;
+  transition: 0.5s;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-bottom: 3em;
+  color: white;
+}
+
+.enter:hover {
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+
+#connection-register a {
+  color: white;
+  /* text-decoration: none; */
+}
+
+#connection-register {
+  font-size: 22px;
+  padding: 0 1vw;
+}
