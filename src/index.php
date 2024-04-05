@@ -142,4 +142,8 @@ switch ($urlPath) {
         $controller = new TestController();
         $controller->Test();
         break;
+
+    default:
+        echo $twig->render('404/404pageView.twig');
+        break;
 }
