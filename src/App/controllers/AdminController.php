@@ -10,7 +10,7 @@ class AdminController
     public function AdminController()
     {
         if (isset($_SESSION['isAdmin'])) {
-        echo $this->twig->render('admin/adminView.twig');
-    }
+            echo $this->twig->render('admin/adminView.twig');
+        }
     }
 }

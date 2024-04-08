@@ -33,6 +33,7 @@ class Database
                 $sql = "CREATE TABLE User (user_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255), surname VARCHAR(255), mail VARCHAR(255) NOT NULL, pwd VARCHAR(255) NOT NULL, phoneNbr VARCHAR(255), isAdmin BOOL NOT NULL DEFAULT false, coin INT, UNIQUE(mail));
                         CREATE TABLE IF NOT EXISTS Football_match (match_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, date VARCHAR(255) NOT NULL, status VARCHAR(50) NOT NULL, opponent_team_id INT NOT NULL, opponent_team_name VARCHAR(255) NOT NULL, OL_score INT, opponent_score INT, victorious_team_id INT);
                         CREATE TABLE IF NOT EXISTS Bet (match_id INT NOT NULL, user_id INT NOT NULL, victorious_team_id INT NOT NULL, coin INT, FOREIGN KEY (match_id) REFERENCES Football_match(match_id), FOREIGN KEY (user_id) REFERENCES User(user_id));
+                        CREATE TABLE Friend (friend_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, friend_id_1 INT NOT NULL, friend_id_2 INT NOT NULL);
                         ";
             $this->conn->exec($sql);
             return true;

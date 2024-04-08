@@ -1,0 +1,24 @@
+{% extends "templates/template.twig" %}
+{% block head %}
+	<link rel="stylesheet" href="App/views/friend/friend.css">
+{% endblock %}
+
+
+{% block content %}
+	<div class="friend-all-container">
+		<div class="add-friend-container">
+			Add a friend
+			<div class="input-group">
+				<input type="email" class="input" id="Email" name="Email" placeholder="friend@gmail.com" autocomplete="off">
+				<input class="button--submit" value="+" type="submit">
+			</div>
+		</div>
+		<div class="friend-list-container">Your friends:
+
+			{% for friend in friends %}
+            <br>    
+				{{friend.mail}}
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

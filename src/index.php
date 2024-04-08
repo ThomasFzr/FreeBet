@@ -117,6 +117,11 @@ switch ($urlPath) {
         $controller->GetFootballMatch();
         break;
 
+    case '/friend':
+        $controller = new FriendListController($twig);
+        $controller->FriendList();
+        break;
+
     case '/processAddMatch':
         $controller = new AddMatchController();
         $controller->AddMatch();

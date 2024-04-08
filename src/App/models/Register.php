@@ -32,7 +32,7 @@ class Register
             $this->conn->exec($sql);
             $_SESSION['isConnected'] = true;
             $_SESSION['mail'] = $mail;
-            $_SESSION['coin'] = $coin;
+            $_SESSION['coin_user'] = $coin;
             $_SESSION['userID'] = $this->user->getUserInfo($mail)['user_id'];
             $_SESSION['successMsg'] = "Bienvenue!";
             return true;
