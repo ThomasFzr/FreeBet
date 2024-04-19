@@ -1,24 +1,29 @@
 {% extends "templates/template.twig" %}
+
 {% block head %}
-	<link rel="stylesheet" href="App/views/friend/friend.css">
+    <link rel="stylesheet" href="App/views/friend/friend.css">
 {% endblock %}
 
-
 {% block content %}
-	<div class="friend-all-container">
-		<div class="add-friend-container">
-			Add a friend
-			<div class="input-group">
-				<input type="email" class="input" id="Email" name="Email" placeholder="friend@gmail.com" autocomplete="off">
-				<input class="button--submit" value="+" type="submit">
-			</div>
-		</div>
-		<div class="friend-list-container">Your friends:
-
-			{% for friend in friends %}
-            <br>    
-				{{friend.mail}}
-			{% endfor %}
-		</div>
-	</div>
+    <div class="friend-all-container">
+        <div class="add-friend-container">
+            Add a friend
+            <form action="/add_friend" method="POST">
+                <div class="input-group">
+                    <input type="email" class="input" id="Email" name="friend_email" placeholder="friend@gmail.com" autocomplete="off">
+                    <button class="button--submit" type="submit">+</button>
+                </div>
+            </form>
+        </div>
+        <div class="friend-list-container">Your friends:
+            {% if friends %}
+                {% for friend in friends %}
+                    <br>    
+                    {{ friend.mail }}
+                {% endfor %}
+            {% else %}
+                <br>No friends yet.
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

@@ -71,6 +71,12 @@ switch ($urlPath) {
         echo $twig->render('connectionRegister/registerView.twig');
         break;
 
+
+    case '/add_friend':
+        $controller = new AddFriendController($twig);
+        $controller->addFriend(); 
+        break;
+
     case '/processLogin':
         $controller = new LoginController();
         $controller->processLogin();
