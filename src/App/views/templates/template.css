@@ -306,7 +306,6 @@ footer {
 .container {
     display: flex;
     justify-content: space-around;
-    align-items: center;
     position: fixed;
     width: 100%;
     transition: top 0.3s;
@@ -330,7 +329,10 @@ footer {
 
 .middle {
     display: flex;
-    justify-content: space-around;
+  justify-content: space-between;
+  text-align: center;
+  height: 100%;
+  margin-top: 20px;
 }
 
 .middle a {
