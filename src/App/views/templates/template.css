@@ -379,3 +379,13 @@ footer {
     color: #F5ADE8;
 
 }
+.btnclassement{
+
+    text-decoration: none;
+    color: white;
+    margin: 0px 0px 0px 9px;
+
+}
+.btnclassement:hover{
+    color: #F5ADE8;
+}

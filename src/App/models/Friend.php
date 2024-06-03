@@ -39,6 +39,7 @@ class Friend
     }
 
 
+
     public function addFriendByEmail($friendEmail)
     {
         // Vérifier si l'utilisateur avec cette adresse e-mail existe

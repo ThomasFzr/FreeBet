@@ -127,6 +127,10 @@ switch ($urlPath) {
         $controller = new FriendListController($twig);
         $controller->FriendList();
         break;
+    case '/classement':
+        $controller = new FriendListController($twig);
+        $controller->FriendList();
+        break;
 
     case '/processAddMatch':
         $controller = new AddMatchController();
