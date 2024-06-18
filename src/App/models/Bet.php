@@ -105,7 +105,8 @@ class Bet
         $rqt = "SELECT b.*, f.*, b.victorious_team_id AS victorious_team_id_bet
         FROM Bet b
         JOIN Football_match f ON f.match_id = b.match_id
-        WHERE user_id = :user_id";
+        WHERE user_id = :user_id
+        ORDER BY bet_id desc";
         $stmt = $this->conn->prepare($rqt);
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 
