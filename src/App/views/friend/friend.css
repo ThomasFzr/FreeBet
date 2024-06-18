@@ -24,7 +24,7 @@ body {
 
 .friend-list-container {
     /* background-color: yellow; */
-    border: 1px solid red;
+    border: 1px solid white;
     padding: 4vh 0;
     width: 60%;
     display: flex;
@@ -32,6 +32,7 @@ body {
     align-items: center;
     justify-content: center;
     font-weight: 100;
+    border-radius: 20px;
 
 }
 

@@ -100,6 +100,29 @@ class Bet
         }
     }
 
+    public function GetClassement($userID)
+    {
+        // Sélectionner les amis de l'utilisateur avec l'ID donné
+        $sql = "SELECT sum(b.coin) as Somme, u.*
+        FROM Bet b
+        JOIN User u ON u.user_id = b.user_id
+        WHERE u.user_id IN (
+            SELECT user_id 
+            FROM User 
+            WHERE user_id IN (SELECT friend_id_2 FROM Friend WHERE friend_id_1 = :user_id)
+               OR user_id IN (SELECT friend_id_1 FROM Friend WHERE friend_id_2 = :user_id)
+          UNION
+            SELECT :user_id
+        )
+        GROUP BY b.user_id, u.user_id
+        ORDER BY sum(b.coin) DESC;";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':user_id', $userID, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getBetsFromUser($user_id)
     {
         $rqt = "SELECT b.*, f.*, b.victorious_team_id AS victorious_team_id_bet
