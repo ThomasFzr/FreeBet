@@ -19,7 +19,7 @@ class FriendListController
             $friends = $friend->getFriendsOfUser($userID);
             // Rendre la vue avec la liste d'amis
             echo $this->twig->render(
-                'classement/classement.twig',
+                'friend/friendView.twig',
                 [
                     'friends' => $friends
                 ]
@@ -29,5 +29,3 @@ class FriendListController
         }
     }
 }
-
-?>

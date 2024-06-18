@@ -74,7 +74,7 @@ switch ($urlPath) {
 
     case '/add_friend':
         $controller = new AddFriendController($twig);
-        $controller->addFriend(); 
+        $controller->addFriend();
         break;
 
     case '/processLogin':
@@ -127,9 +127,10 @@ switch ($urlPath) {
         $controller = new FriendListController($twig);
         $controller->FriendList();
         break;
-    case '/classement':
-        $controller = new FriendListController($twig);
-        $controller->FriendList();
+
+    case '/ranking':
+        $controller = new GetClassementController($twig);
+        $controller->GetClassement();
         break;
 
     case '/processAddMatch':

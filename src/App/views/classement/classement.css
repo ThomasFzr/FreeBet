@@ -9,27 +9,34 @@ body {
     align-items: center;
     text-align: center;
     justify-content: center;
-   margin-right: 50px;
 }
 
 .container-classement {
+    padding-top: 16vh;
     display: flex;
-    width: 100%;
-    align-items: center;
-    text-align: center;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 50px 50px;
 }
-.block{
-    height: 300px;
-}
+
 table {
-    width: 100%;
     border-collapse: collapse;
+    width: 100%;
 }
 
-th, td {
-    border: 1px solid black;
+th,
+td {
+    border: 1px solid #ddd;
     padding: 8px;
-    text-align: left;
+    text-align: center;
 }
 
+th {
+    background-color: #f2f2f2;
+    font-weight: 200;
+}
+
+h2 {
+    font-weight: 200;
+}

@@ -1,33 +1,32 @@
 {% extends "templates/template.twig" %}
 
 {% block head %}
-<link rel="stylesheet" href="App/views/classement/classement.css">
+	<link rel="stylesheet" href="App/views/classement/classement.css">
 {% endblock %}
 
 {% block content %}
-<div class="block"></div>
-<h2>Ranking:</h2>
-<div class="container-classement">
-    <div class="classement">
-        <table>
-            <thead>
-                <tr>
-                    <th>Email</th>
-                    <th>Coin</th>
-                    <th>Rank</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for player in players %}
-                <tr>
-                    <td>{{ player.mail }}</td>
-                    <td>{{ player.coin }}</td>
-                    <td>{{ loop.index }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-       
-    </div>
-</div>
+	<div class="container-classement">
+		<h2>Ranking:</h2>
+		<div class="classement">
+			<table>
+				<thead>
+					<tr>
+						<th>Email</th>
+						<th>Coin</th>
+						<th>Rank</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for player in players %}
+						<tr>
+							<td>{{ player.mail }}</td>
+							<td>{{ player.Somme }}</td>
+							<td>{{ loop.index }}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+
+		</div>
+	</div>
 {% endblock %}
