@@ -1,11 +1,11 @@
 
-## Rapport d'Avancement du Projet
+# Rapport d'Avancement du Projet
 
-# Janvier : Lancement du Projet
+## Janvier : Lancement du Projet
 
 En janvier, nous avons  lancé le projet. Cette phase initiale a été consacrée à des sessions de brainstorming  pour définir les objectifs du projet, identifier les principales fonctionnalités à développer et établir une feuille de route générale. L'équipe a proposé diverses idées  et a discuté des meilleures pratiques. Cette période de réflexion a jeté les bases pour les étapes suivantes du développement.
 
-# Février : Mise en Place du Projet
+## Février : Mise en Place du Projet
 
 En février, nous sommes passés à la phase de mise en place du projet. Plusieurs actions clés ont été réalisées :
 
@@ -13,7 +13,7 @@ En février, nous sommes passés à la phase de mise en place du projet. Plusieu
 - Répartition des Tâches : Les responsabilités ont été clairement définies et assignées à chaque membre de l'équipe, garantissant ainsi une répartition équilibrée du travail.
 - Maquette Figma : Une maquette détaillée de l'application a été créée sur Figma. Cela a permis de visualiser l'interface utilisateur et d'aligner l'équipe sur les objectifs de conception.
 
-# Mars : Développement des Fonctionnalités de Base
+## Mars : Développement des Fonctionnalités de Base
 
 En mars, l'équipe s'est concentrée sur le développement des fonctionnalités de base :
 
@@ -21,7 +21,7 @@ En mars, l'équipe s'est concentrée sur le développement des fonctionnalités 
 - Page Profil : Une page de profil utilisateur a été créée, permettant aux utilisateurs de gérer leurs informations personnelles.
 - Mise en Place des Tables de la BDD : La structure de la base de données a été définie et les tables nécessaires ont été créées, assurant ainsi une organisation efficace des données.
 
- # Avril : Intégration des Fonctionnalités de Paris
+ ## Avril : Intégration des Fonctionnalités de Paris
 
 En avril, nous avons ajouté des fonctionnalités essentielles pour le cœur de notre application :
 
@@ -29,14 +29,14 @@ En avril, nous avons ajouté des fonctionnalités essentielles pour le cœur de 
 - Gain/Perte de Coins : Les mécanismes de gain et de perte de coins en fonction des résultats des paris ont été mis en place.
 - Récupération des Données de l'API : Nous avons configuré la récupération de données à partir d'une API externe pour alimenter notre application en informations pertinentes.
 
- # Mai : Ajout de Fonctionnalités Sociales et Administratives
+ ## Mai : Ajout de Fonctionnalités Sociales et Administratives
 
 En mai, nous avons enrichi l'application avec des fonctionnalités sociales et administratives :
 
 - Système d'Ajout d'Amis : Les utilisateurs peuvent désormais ajouter des amis, favorisant ainsi l'interaction sociale au sein de l'application.
 - Ajout de Match en Mode Admin : Les administrateurs ont la possibilité d'ajouter de nouveaux matchs, assurant une mise à jour régulière et dynamique des événements disponibles pour les paris.
 
- # Juin : Classement des Meilleurs Joueurs
+ ## Juin : Classement des Meilleurs Joueurs
 
 En juin, nous avons introduit un système de classement :
 
